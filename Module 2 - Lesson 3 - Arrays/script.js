@@ -181,15 +181,64 @@
 
 // Третий вариант решения - перебор массива с конца при реиндексации подъезжает уже переверенный элемент
 
-const arrA = [3, 'Hello', null, 42, false];
+// const arrA = [3, 'Hello', null, 42, false];
 
-for (let i = arrA.length - 1; i >= 0; i -= 1) {
-  console.log(arrA[i]);
-  if (typeof arrA[i] !== 'number') {
-    arrA.splice(i, 1);
-  }
-}
-console.log(arrA);
+// for (let i = arrA.length - 1; i >= 0; i -= 1) {
+//   console.log(arrA[i]);
+//   if (typeof arrA[i] !== 'number') {
+//     arrA.splice(i, 1);
+//   }
+// }
+// console.log(arrA);
 
 // Та же задача другой массив
-// const arrB = ['world', true, 22, 41, undefined];
+const arrB = ['world', true, 22, 41, undefined];
+
+// for (let i = arrB.length - 1; i >= 0; i -= 1) {
+//   console.log(arrB[i]);
+
+//   if (typeof arrB[i] !== 'number') {
+//     arrB.splice(i, 1);
+//   }
+// }
+// console.log(arrB);
+
+// Task-2
+// Потрібно створити функцію яка буде приймати 1 параметр
+// Функція повина відібрати з масиву тільки ті елементи що дублюються в ньому та повернути їх в вигляді нового масиву як результат виконання функції
+
+// function getCommonElements(arr) {
+//   const result = [];
+
+//   for (let i = 0; i < arr.length; i += 1) {
+//     if (arr.includes(arr[i], i + 1)) {
+//       result.push(arr[i]);
+//     }
+//   }
+//   return result;
+// }
+
+// console.log(getCommonElements([1, 2, 3, 2, 1, 17, 19]));
+
+// Task-3
+//Потрібно створити функцію яка буде приймати 2 параметри
+//1 параметр це масив всіх юзерів
+//2 параметр це масив з чоловічими іменами.
+//Функція повина відібрати з масиву всіх юзерів лише жіночі імена та повернути їх в результаті свого виканання.
+
+// const users = ['Artem', 'Anna', 'Larisa', 'Maksim', 'Svetlana', 'David', 'Roman', 'Olga'];
+// const men = ['Artem', 'Maksim', 'David', 'Roman'];
+
+// function getWomen(users, men) {
+//     const women = [];
+
+//     for (const user of users) {
+//         if (!men.includes(user)) {
+//             women.push(user)
+//         }
+//     }
+
+//     return women
+// }
+
+// console.log(getWomen(users, men));
