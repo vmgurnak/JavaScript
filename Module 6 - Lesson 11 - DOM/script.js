@@ -213,36 +213,465 @@
 // console.log(usernames);
 // usernames.remove();
 
-const list = document.querySelector(".js-list");
-console.log(list);
+// const list = document.querySelector(".js-list");
+// console.log(list);
 
-const li = document.createElement("li");
-li.textContent = 5;
-li.classList.add("js-item");
-li.classList.toggle("js-item");
-li.classList.toggle("js-item");
-li.classList.remove("js-item");
-li.classList.toggle("js-item");
-li.classList.replace("js-item", "item");
-li.classList.toggle("js-item");
-li.classList.remove("item");
-console.dir(li);
-
-// const h2 = document.createElement('h2')
-// li.append(h2)
-// const li2 = document.createElement('li');
-// li2.textContent = 6;
-// li2.classList.add('js-item');
-
-// const liItems = [li, li2];
-// console.log(li['classList']);
-// li.classList.replace('js-it', 'js-elem')
-// li.classList.remove('js-item')
-// list.append(...liItems)
+// // Создание элемента, добавление класса
+// const li = document.createElement("li");
+// li.textContent = 5;
+// li.classList.add("js-item");
+// li.classList.toggle("js-item");
+// li.classList.toggle("js-item");
+// li.classList.remove("js-item");
+// li.classList.toggle("js-item");
+// li.classList.replace("js-item", "item");
+// li.classList.toggle("js-item");
+// li.classList.remove("item");
 // console.dir(li);
 
-// const list = document.querySelector('.js-list')
-// const li = `<li class="js-item">5</li>`;
+// // appendChild; - добавляет один элемент
+// list.appendChild(li);
+
+// const li2 = document.createElement("li");
+// li2.textContent = 6;
+// li2.classList.add("js-item");
+// console.log(li2);
+
+// // Добавление в разметку двух li
+// // list.append(li, li2);
+
+// // Добавление элемента внутри li
+// const h2 = document.createElement("h2");
+// h2.textContent = "Header H2";
+// li.append(h2);
+
+// li.classList.replace("js-item", "js-elem");
+// // li.classList.remove("js-item");
+
+// // Добавление массива элементов с распылением
+// const liItems = [li, li2];
+// list.append(...liItems);
+// console.dir(li);
+// console.log(li["classList"]);
+
+// Создание, добавление элементов с помощью html подобного синтаксиса
+
+// const list = document.querySelector(".js-list");
+// console.log(list);
+
+// const li = `<li class="js-item">5</li><li class="js-item">6</li>`;
+// console.log(li);
+
+// // Метод insertAdjacentHTML добавляет в разметку
+// list.insertAdjacentHTML("beforeend", li);
+
+// Свойство innerHTML заменяет разметку;
+// list.innerHTML = li;
+
+// Очистка разметки
+// list.innerHTML = "";
 
 // list.insertAdjacentHTML('beforeend',li)
 // list.innerHTML = ''
+
+// Каждое обращение с js в html ресурсоемкая операция
+// Лучше вначале получить например ul и дальше воспользоваться встроенной навигацией по нашему html элементу
+
+// const items = document.querySelectorAll(".js-item");
+// const items2 = document.getElementsByClassName("js-item");
+
+// const list = document.querySelector(".js-list");
+
+// console.log("static", items);
+// console.log("dynamic", items2);
+// console.dir(list);
+
+// // Добавоение трех li в разметку
+
+// let markup = "";
+// for (let i = 1; i <= 3; i += 1) {
+//   markup += `<li class="js-item">${list.children.length + i}</li>`;
+// }
+// console.log(markup);
+
+// list.insertAdjacentHTML("beforeend", markup);
+
+// console.log("static", items);
+// console.log("dynamic", items2);
+
+// const items3 = document.querySelectorAll(".js-item");
+// console.log("static", items3);
+
+// Свойство innerHTML	innerHTML Property
+
+// Чтение	Reading
+
+// const title = document.querySelector(".title");
+// console.log(title.innerHTML);
+
+// Изменение	Changing
+
+// const title = document.querySelector(".title");
+// title.innerHTML = 'New and <span class="accent">improved</span> title';
+
+// console.log(title);
+// console.log(title.innerHTML);
+
+// // Очистка содержимого
+// title.innerHTML = "";
+
+// Однотипная (шаблонная) разметка
+
+// const technologies = ["HTML", "CSS", "JavaScript", "React", "Node"];
+// const list = document.querySelector(".list");
+
+// const markup = technologies
+//   .map((technology) => `<li class="list-item">${technology}</li>`)
+//   .join("");
+
+// // Check the console, you'll see a single string with HTML tags
+// console.log(markup);
+
+// // Adding all the markup in one operation
+// list.innerHTML = markup;
+
+// Добавление	Addition
+
+// const article = document.querySelector(".article");
+// const htmlString = `<p class="article-text">Nullam quis ante. Vestibulum dapibus nunc ac augue. In consectetuer turpis ut velit.</p>
+//    <a class="link" href="#">Read more...</a>`;
+
+// // Replace += with = operator. See the difference?
+// // Article title is lost because we overwrite element content.
+// article.innerHTML += htmlString;
+
+// console.log(article.innerHTML);
+
+// Метод insertAdjacentHTML()	insertAdjacentHTML() method
+// elem.insertAdjacentHTML(position, string);
+// Аргумент position - это строка, позиция относительно элемента elem. Принимает одно из четырёх значений.
+
+// "beforebegin" - перед elem
+// "afterbegin" - внутри elem, перед всеми детьми
+// "beforeend" - внутри elem, после всех детей
+// "afterend" - после elem
+
+// const list = document.querySelector(".list");
+
+// const newTechnologies = ["React", "TypeScript", "Node.js"];
+// const markup = newTechnologies
+//   .map((technology) => `<li class="list-item new">${technology}</li>`)
+//   .join("");
+
+// list.insertAdjacentHTML("beforeend", markup);
+// list.insertAdjacentHTML("beforebegin", "<h2>Popular technologies</h2>");
+
+// Элементы коммуникации
+
+// const input = document.querySelector(".js-query");
+// input.value = "Hello world";
+// // input.value = 'Hello world';
+// console.dir(input);
+
+// Атрибуты
+
+// const btn = document.querySelector(".js-btn");
+// console.dir(btn);
+
+// btn.hidden = true;
+// btn.hidden = false;
+// btn.disabled = true
+// btn.disabled = false;
+// btn.setAttribute('hidden', true );
+// btn.removeAttribute('hidden');
+// console.log(btn.getAttribute('hidden'));
+
+// Добавление дата атрибутов
+
+// btn.setAttribute("data-id", 24);
+// btn.setAttribute("data-goods-id", 2);
+// btn.setAttribute("data-test-id", 3);
+
+// Считывание значений дата атрибутов с помощью деструктуризации
+
+// const { goodsId, id, testId } = btn.dataset;
+// console.log(goodsId);
+// console.log(id);
+// console.log(testId);
+
+// Считывание без деструктуризации с помощью свойства dataset
+// Название атрибута при поиске вводится через camelCase
+
+// console.log(btn.dataset.goodsId);
+// console.log(btn.dataset.id);
+// console.log(btn.dataset.testId);
+
+// console.log(btn.attributes);
+
+// console.dir(btn);
+
+// Lection.Practice
+// Из массива объектов сделать html разметку
+
+const cars = [
+  {
+    model: "Honda",
+    type: "Civic",
+    price: 12000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCOHzdE-dK6WK7ax8NzQolTcCWA_jhJD-CRGWfqKJIJuGs8ML_-OyiDwzsdC8jOi_K10&usqp=CAU",
+  },
+  {
+    model: "Audi",
+    type: "Q7",
+    price: 40000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/8b/2017_Audi_Q7_S_Line_Quattro_3.0_Front.jpg",
+  },
+  {
+    model: "BMW",
+    type: "5 series",
+    price: 9000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUH96e58ynLO8SXMsFTNYkJci79eAZ8CyqcZsZ8snvzz2sfLl3Ojd1BQoaWBcrMKWvSYc&usqp=CAU",
+  },
+  {
+    model: "Honda",
+    type: "Accord",
+    price: 20000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/76/2021_Honda_Accord_Sport_%28facelift%29%2C_front_11.30.21.jpg",
+  },
+  {
+    model: "Volvo",
+    type: "XC60",
+    price: 7000,
+    img: "https://www.volvocars.com/media/shared-assets/master/images/pages/my19/xc60-my19/accessories/xc60my19_accessories_exteriorfeature2_1.jpg?w=320",
+  },
+  {
+    model: "Honda",
+    type: "Civic",
+    price: 12000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCOHzdE-dK6WK7ax8NzQolTcCWA_jhJD-CRGWfqKJIJuGs8ML_-OyiDwzsdC8jOi_K10&usqp=CAU",
+  },
+  {
+    model: "Audi",
+    type: "Q7",
+    price: 40000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/8b/2017_Audi_Q7_S_Line_Quattro_3.0_Front.jpg",
+  },
+  {
+    model: "BMW",
+    type: "5 siries",
+    price: 9000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUH96e58ynLO8SXMsFTNYkJci79eAZ8CyqcZsZ8snvzz2sfLl3Ojd1BQoaWBcrMKWvSYc&usqp=CAU",
+  },
+  {
+    model: "Honda",
+    type: "Accord",
+    price: 20000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/76/2021_Honda_Accord_Sport_%28facelift%29%2C_front_11.30.21.jpg",
+  },
+  {
+    model: "Volvo",
+    type: "XC60",
+    price: 7000,
+    img: "https://www.volvocars.com/media/shared-assets/master/images/pages/my19/xc60-my19/accessories/xc60my19_accessories_exteriorfeature2_1.jpg?w=320",
+  },
+  {
+    model: "Honda",
+    type: "Civic",
+    price: 12000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCOHzdE-dK6WK7ax8NzQolTcCWA_jhJD-CRGWfqKJIJuGs8ML_-OyiDwzsdC8jOi_K10&usqp=CAU",
+  },
+  {
+    model: "Audi",
+    type: "Q7",
+    price: 40000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/8b/2017_Audi_Q7_S_Line_Quattro_3.0_Front.jpg",
+  },
+  {
+    model: "BMW",
+    type: "5 siries",
+    price: 9000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUH96e58ynLO8SXMsFTNYkJci79eAZ8CyqcZsZ8snvzz2sfLl3Ojd1BQoaWBcrMKWvSYc&usqp=CAU",
+  },
+  {
+    model: "Honda",
+    type: "Accord",
+    price: 20000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/76/2021_Honda_Accord_Sport_%28facelift%29%2C_front_11.30.21.jpg",
+  },
+  {
+    model: "Volvo",
+    type: "XC60",
+    price: 7000,
+    img: "https://www.volvocars.com/media/shared-assets/master/images/pages/my19/xc60-my19/accessories/xc60my19_accessories_exteriorfeature2_1.jpg?w=320",
+  },
+  {
+    model: "Honda",
+    type: "Civic",
+    price: 12000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCOHzdE-dK6WK7ax8NzQolTcCWA_jhJD-CRGWfqKJIJuGs8ML_-OyiDwzsdC8jOi_K10&usqp=CAU",
+  },
+  {
+    model: "Audi",
+    type: "Q7",
+    price: 40000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/8b/2017_Audi_Q7_S_Line_Quattro_3.0_Front.jpg",
+  },
+  {
+    model: "BMW",
+    type: "5 siries",
+    price: 9000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUH96e58ynLO8SXMsFTNYkJci79eAZ8CyqcZsZ8snvzz2sfLl3Ojd1BQoaWBcrMKWvSYc&usqp=CAU",
+  },
+  {
+    model: "Honda",
+    type: "Accord",
+    price: 20000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/76/2021_Honda_Accord_Sport_%28facelift%29%2C_front_11.30.21.jpg",
+  },
+  {
+    model: "Volvo",
+    type: "XC60",
+    price: 7000,
+    img: "https://www.volvocars.com/media/shared-assets/master/images/pages/my19/xc60-my19/accessories/xc60my19_accessories_exteriorfeature2_1.jpg?w=320",
+  },
+  {
+    model: "Honda",
+    type: "Civic",
+    price: 12000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCOHzdE-dK6WK7ax8NzQolTcCWA_jhJD-CRGWfqKJIJuGs8ML_-OyiDwzsdC8jOi_K10&usqp=CAU",
+  },
+  {
+    model: "Audi",
+    type: "Q7",
+    price: 40000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/8b/2017_Audi_Q7_S_Line_Quattro_3.0_Front.jpg",
+  },
+  {
+    model: "BMW",
+    type: "5 siries",
+    price: 9000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUH96e58ynLO8SXMsFTNYkJci79eAZ8CyqcZsZ8snvzz2sfLl3Ojd1BQoaWBcrMKWvSYc&usqp=CAU",
+  },
+  {
+    model: "Honda",
+    type: "Accord",
+    price: 20000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/76/2021_Honda_Accord_Sport_%28facelift%29%2C_front_11.30.21.jpg",
+  },
+  {
+    model: "Volvo",
+    type: "XC60",
+    price: 7000,
+    img: "https://www.volvocars.com/media/shared-assets/master/images/pages/my19/xc60-my19/accessories/xc60my19_accessories_exteriorfeature2_1.jpg?w=320",
+  },
+  {
+    model: "Honda",
+    type: "Civic",
+    price: 12000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCOHzdE-dK6WK7ax8NzQolTcCWA_jhJD-CRGWfqKJIJuGs8ML_-OyiDwzsdC8jOi_K10&usqp=CAU",
+  },
+  {
+    model: "Audi",
+    type: "Q7",
+    price: 40000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/8b/2017_Audi_Q7_S_Line_Quattro_3.0_Front.jpg",
+  },
+  {
+    model: "BMW",
+    type: "5 siries",
+    price: 9000,
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUH96e58ynLO8SXMsFTNYkJci79eAZ8CyqcZsZ8snvzz2sfLl3Ojd1BQoaWBcrMKWvSYc&usqp=CAU",
+  },
+  {
+    model: "Honda",
+    type: "Accord",
+    price: 20000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/7/76/2021_Honda_Accord_Sport_%28facelift%29%2C_front_11.30.21.jpg",
+  },
+  {
+    model: "Volvo",
+    type: "XC60",
+    price: 7000,
+    img: "https://www.volvocars.com/media/shared-assets/master/images/pages/my19/xc60-my19/accessories/xc60my19_accessories_exteriorfeature2_1.jpg?w=320",
+  },
+];
+
+console.log(cars);
+
+// {
+//     model: "Honda",
+//     type: "Civic",
+//     price: 12000,
+//     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCOHzdE-dK6WK7ax8NzQolTcCWA_jhJD-CRGWfqKJIJuGs8ML_-OyiDwzsdC8jOi_K10&usqp=CAU",
+// }
+
+console.log(cars.length);
+
+// Решение с помощью createElement, arr.map,append
+
+// // Забираем ul по селектору .js-list
+// const list = document.querySelector(".js-list");
+// list.style.listStyle = "none";
+
+// // Функция для создания разметки , с реструктуризацией
+// function createMarkup(arr) {
+//   const markup = arr.map(({ model, type, price, img }) => {
+//     const li = document.createElement("li");
+//     const imgEl = document.createElement("img");
+//     const h2 = document.createElement("h2");
+//     const h3 = document.createElement("h3");
+//     const span = document.createElement("span");
+
+//     // Назначение атрибутов
+//     imgEl.src = img;
+//     imgEl.alt = model;
+//     imgEl.style.width = "300px";
+
+//     h2.textContent = model;
+//     h3.textContent = type;
+//     span.textContent = price;
+
+//     li.append(imgEl, h2, h3, span);
+
+//     return li;
+//   });
+//   console.log(markup);
+
+//   // синтаксис спреда, распыливает li с массива markup
+//   // за один раз помещаем в разметку
+//   list.append(...markup);
+// }
+
+// createMarkup(cars);
+
+// Решение с помощью шаблонных строк
+
+// {
+//     model: "Honda",
+//     type: "Civic",
+//     price: 12000,
+//     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCOHzdE-dK6WK7ax8NzQolTcCWA_jhJD-CRGWfqKJIJuGs8ML_-OyiDwzsdC8jOi_K10&usqp=CAU",
+// }
+
+// Забираем ul по селектору .js-list
+const list = document.querySelector(".js-list");
+list.style.listStyle = "none";
+
+function createMarkup(arr) {
+  const markup = arr
+    .map(
+      ({ model, type, price, img }) => `<li>
+        <img src="${img}" alt="${model}"  width="300"/>
+        <h2>${model}</h2>
+        <h3>${type}</h3>
+        <span>${price}</span>
+  </li>`
+    )
+    .join("");
+
+  console.log(markup);
+
+  list.insertAdjacentHTML("beforeend", markup);
+}
+
+createMarkup(cars);
