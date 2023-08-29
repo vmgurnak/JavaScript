@@ -245,3 +245,42 @@ img {
 .blur-up.lazyloaded {
   filter: blur(0);
 } */
+
+/* ------------ПРАКТИКА------------ */
+
+.container {
+  display: flex;
+  margin: 100px 50px 50px 50px;
+}
+
+.content {
+  width: 156px;
+  border: 1px solid black;
+  margin: 0 auto;
+  /* запрет выделения текста */
+  user-select: none;
+}
+
+.item {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  font-size: 25px;
+  border: 1px solid black;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background 0.3s;
+}
+
+.item:hover {
+  background-color: rgb(0, 200, 255);
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  padding: 30px;
+}
