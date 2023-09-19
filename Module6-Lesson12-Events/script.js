@@ -12,48 +12,64 @@
 // handler - коллбэк-функция которая будет вызвана при наступлении события.
 // options - необязательный объект параметров с расширенными настройками.
 
-// const button = document.querySelector(".my-button");
+// Коллбэк-функция внутри слушателя
 
-// button.addEventListener("click", () => {
-//   console.log("Button was clicked");
+// const button = document.querySelector('.my-button');
+
+// button.addEventListener('click', () => {
+//   console.log('Button was clicked');
 // });
 
 // Для коллбэка можно (и желательно) использовать отдельную функцию и передавать на неё ссылку. Именованная функция повышает читаемость кода.
 
-// const button = document.querySelector(".my-button");
+// const button = document.querySelector('.my-button');
+
+// Стрелочаня функция, объявдяется до вызова слушателя
 
 // const handleClick = () => {
-//   console.log("Button was clicked");
+//   console.log('Button was clicked');
 // };
 
-// button.addEventListener("click", handleClick);
+// button.addEventListener('click', handleClick);
+
+// Обычная функция
+
+// const button = document.querySelector('.my-button');
+// console.dir(button);
+
+// button.addEventListener('click', handlerClick);
+
+// function handlerClick() {
+//   console.log('Button was click');
+// }
 
 // На одном элементе может быть сколько угодно обработчиков событий, даже событий одного типа. Коллбэк-функции будут вызываться в порядке регистрации их в коде.
 
-// const singleBtn = document.querySelector("#single");
+// const singleBtn = document.querySelector('#single');
 
 // const handleClick = () => {
-//   console.log("click event listener callback");
+//   console.log('click event listener callback');
 // };
 
-// singleBtn.addEventListener("click", handleClick);
+// singleBtn.addEventListener('click', handleClick);
 
-// // ===============================================
-// const multiBtn = document.querySelector("#multiple");
+// ===============================================
+
+// const multiBtn = document.querySelector('#multiple');
 
 // const firstCallback = () => {
-//   console.log("First callback!");
+//   console.log('First callback!');
 // };
 // const secondCallback = () => {
-//   console.log("Second callback!");
+//   console.log('Second callback!');
 // };
 // const thirdCallback = () => {
-//   console.log("Third callback!");
+//   console.log('Third callback!');
 // };
 
-// multiBtn.addEventListener("click", firstCallback);
-// multiBtn.addEventListener("click", secondCallback);
-// multiBtn.addEventListener("click", thirdCallback);
+// multiBtn.addEventListener('click', firstCallback);
+// multiBtn.addEventListener('click', secondCallback);
+// multiBtn.addEventListener('click', thirdCallback);
 
 // Метод removeEventListener()	removeEventListener() method
 
@@ -62,67 +78,68 @@
 
 // const addListenerBtn = document.querySelector('[data-action="add"]');
 // const removeListenerBtn = document.querySelector('[data-action="remove"]');
-// const btn = document.querySelector("#btn");
+// const btn = document.querySelector('#btn');
 
 // const handleClick = () => {
-//   console.log("click event listener callback");
+//   console.log('click event listener callback');
 // };
 
-// addListenerBtn.addEventListener("click", () => {
-//   btn.addEventListener("click", handleClick);
-//   console.log("click event listener was added to btn");
+// addListenerBtn.addEventListener('click', () => {
+//   btn.addEventListener('click', handleClick);
+//   console.log('click event listener was added to btn');
 // });
 
-// removeListenerBtn.addEventListener("click", () => {
-//   btn.removeEventListener("click", handleClick);
-//   console.log("click event listener was removed from btn");
+// removeListenerBtn.addEventListener('click', () => {
+//   btn.removeEventListener('click', handleClick);
+//   console.log('click event listener was removed from btn');
 // });
 
 // Ключевое слово this	Keyword this
 
 // const mango = {
-//   username: "Mango",
+//   username: 'Mango',
 //   showUsername() {
 //     console.log(this);
 //     console.log(`My username is: ${this.username}`);
 //   },
 // };
 
-// const btn = document.querySelector(".js-btn");
+// const btn = document.querySelector('.js-btn');
 // console.log(btn);
 
 // mango.showUsername();
-// // ✅ Работает
+// ✅ Работает
 
-// // // ❌ this будет ссылаться на button если использовать showUsername как callback
-// // btn.addEventListener("click", mango.showUsername);
-// // // не работает
+// ❌ this будет ссылаться на button если использовать showUsername как callback
+// btn.addEventListener('click', mango.showUsername);
+// не работает
 
-// // // ✅ Не забывайте привязывать контекст методов объекта
-// btn.addEventListener("click", mango.showUsername.bind(mango));
+// ✅ Не забывайте привязывать контекст методов объекта
+// btn.addEventListener('click', mango.showUsername.bind(mango));
 
 // Объект события	Event Object
+
 // Каждое событие представляет собой объект, который содержит информацию о деталях события и автоматически передается первым аргументом в обработчик события. Все события происходят от базового класса Event.
 
-// const button = document.querySelector(".btn");
+// const button = document.querySelector('.btn');
 
 // const handleClick = (event) => {
-//   console.log("event: ", event);
-//   console.log("event type: ", event.type);
-//   console.log("currentTarget: ", event.currentTarget);
+//   console.log('event: ', event);
+//   console.log('event type: ', event.type);
+//   console.log('currentTarget: ', event.currentTarget);
 // };
 
-// button.addEventListener("click", handleClick);
+// button.addEventListener('click', handleClick);
 
 // Действия браузера по умолчанию	Browser default actions
 
 // Для отмены действия браузера по умолчанию на объекте события есть стандартный метод preventDefault().
 
-// const form = document.querySelector(".register-form");
+// const form = document.querySelector('.register-form');
 
 // console.log(form);
 
-// form.addEventListener("submit", (event) => {
+// form.addEventListener('submit', (event) => {
 //   event.preventDefault();
 //   console.log(event);
 //   console.log(event.currentTarget);
@@ -136,21 +153,23 @@
 
 // События клавиатуры Keyboard Events
 
-// Есть два основных события клавиатуры: keydown и keyup. В отличии от других, события клавиатуры обрабатываются на документе, а не на конкретном элементе. Объекты событий клавиатуры происходят от базового класса KeyboardEvent.
+// Есть два основных события клавиатуры: keydown и keyup.
 
-// document.addEventListener("keydown", (event) => {
-//   console.log("Keydown: ", event);
+// В отличии от других, события клавиатуры обрабатываются на документе, а не на конкретном элементе.Объекты событий клавиатуры происходят от базового класса KeyboardEvent.
+
+// document.addEventListener('keydown', (event) => {
+//   console.log('Keydown: ', event);
 // });
 
-// document.addEventListener("keyup", (event) => {
-//   console.log("Keyup: ", event);
+// document.addEventListener('keyup', (event) => {
+//   console.log('Keyup: ', event);
 // });
 
 // Свойства key и code	key and code properties
 
-// document.addEventListener("keydown", (event) => {
-//   console.log("key: ", event.key);
-//   console.log("code: ", event.code);
+// document.addEventListener('keydown', (event) => {
+//   console.log('key: ', event.key);
+//   console.log('code: ', event.code);
 // });
 
 // Поставьте фокус в окно примера кликнув в него мышкой, отслеживание событий клавиатуры стоит на элементе document. Печатайте что-то на клавиатуре и смотрите результат.
@@ -158,14 +177,14 @@
 // // Выбор кнопки
 // const clearLogBtn = document.querySelector('[data-action="clear"]');
 // // Выбор div контейнера
-// const logList = document.querySelector(".log-list");
+// const logList = document.querySelector('.log-list');
 // // Начальное значение счетчика
 // let keypressCounter = 1;
 
 // // Слушатели (обработчики событий) для нажатия, отжатия клавиш и нажатии клавиши
-// document.addEventListener("keydown", logMessage);
-// document.addEventListener("keyup", logMessage);
-// clearLogBtn.addEventListener("click", reset);
+// document.addEventListener('keydown', logMessage);
+// document.addEventListener('keyup', logMessage);
+// clearLogBtn.addEventListener('click', reset);
 
 // // коллбэк-функция для обработки события
 // function logMessage({ type, key, code }) {
@@ -179,10 +198,10 @@
 //   </div>`;
 
 //   // Добавление разметки
-//   logList.insertAdjacentHTML("afterbegin", markup);
+//   logList.insertAdjacentHTML('afterbegin', markup);
 
 //   // Увеличение счетчика
-//   if (type === "keyup") {
+//   if (type === 'keyup') {
 //     incrementKeypressCounter();
 //   }
 // }
@@ -190,7 +209,7 @@
 // // Коллбэк-функция для события клика по кнопкпе (сброс счетчика, очистка разметки)
 // function reset() {
 //   keypressCounter = 1;
-//   logList.innerHTML = "";
+//   logList.innerHTML = '';
 // }
 
 // // Функция счетчика
@@ -202,13 +221,14 @@
 
 // Для обработки комбинации клавиш, например Ctrl + s или любую другую, на объекте события есть свойства ctrlKey, altKey, shiftkey и metaKey, хранящие булевое значение сигнализирующее о том, была зажата клавиша-модификатор или нет.
 
-// document.addEventListener("keydown", (event) => {
-//   console.log(event);
+// document.addEventListener('keydown', (event) => {
+//   // console.log(event);
 
+//   // Отмена действия Ctr + S по умолчанию
 //   event.preventDefault();
 
-//   if ((event.ctrlKey || event.metaKey) && event.code === "KeyS") {
-//     console.log("«Ctrl + s» or «Command + s» combo");
+//   if ((event.ctrlKey || event.metaKey) && event.code === 'KeyS') {
+//     console.log('«Ctrl + s» or «Command + s» combo');
 //   }
 // });
 
@@ -218,19 +238,20 @@
 
 // Отправка формы происходит при клике по кнопке с атрибутом type="submit" или нажатии клавиши Enter, находясь в каком-нибудь её текстовом поле. Событие submit можно применить для валидации (проверки) формы перед отправкой, так как на объекте события есть много полезных свойств связанных с элементами формы. Сабмит формы перезагружает страницу, поэтому не забывайте отменять действие по умолчанию методом preventDefault().
 
-// const form = document.querySelector(".form");
+// const form = document.querySelector('.form');
 // console.log(form);
 
-// form.addEventListener("submit", handleSubmit);
+// form.addEventListener('submit', handleSubmit);
 
 // function handleSubmit(event) {
 //   event.preventDefault();
+
 //   const {
 //     elements: { login, password },
 //   } = event.currentTarget;
 
-//   if (login.value === "" || password.value === "") {
-//     return console.log("Please fill in all the fields!");
+//   if (login.value === '' || password.value === '') {
+//     return console.log('Please fill in all the fields!');
 //   }
 
 //   console.log(`Login: ${login.value}, Password: ${password.value}`);
@@ -241,18 +262,19 @@
 
 // Происходит после изменения элемента формы. Для текстовых полей или textarea событие произойдёт не при каждом вводе символа, а при потере фокуса, что не всегда удобно. Например, пока вы набираете что-то в текстовом поле - события нет, но как только фокус пропал, произойдет событие change. Для остальных элементов, например select, чекбоксов и радио-кнопок, событие change срабатывает сразу при выборе значения.
 
-// const select = document.querySelector(".pizza-select");
-// const textOutput = document.querySelector(".text-output");
-// const valueOutput = document.querySelector(".value-output");
+// const select = document.querySelector('.pizza-select');
+// const textOutput = document.querySelector('.text-output');
+// const valueOutput = document.querySelector('.value-output');
 
-// setOutput();
-
-// select.addEventListener("change", setOutput);
+// select.addEventListener('change', setOutput);
 
 // function setOutput() {
 //   const selectedOptionValue = select.value;
+//   console.log(selectedOptionValue);
 //   const selectedOptionIndex = select.selectedIndex;
+//   console.log(selectedOptionIndex);
 //   const selectedOptionText = select.options[selectedOptionIndex].text;
+//   console.log(selectedOptionText);
 
 //   textOutput.textContent = selectedOptionText;
 //   valueOutput.textContent = selectedOptionValue;
@@ -262,47 +284,63 @@
 
 // Происходит только на текстовых полях и textarea, и создаётся каждый раз при изменении значения элемента, не дожидаясь потери фокуса. На практике input это самое главное событие для работы с текстовыми полями формы.
 
-// const textInput = document.querySelector(".text-input");
+// const textInput = document.querySelector('.text-input');
+// const output = document.querySelector('.output');
+
+// textInput.addEventListener('input', (event) => {
+//   output.textContent = event.currentTarget.value;
+// });
+
+// События focus и blur focus and blur events
+
+// Элемент получает фокус при клике мыши или переходе клавишей Tab.
+// Момент получения фокуса и потери очень важен, при получении фокуса мы можем подгрузить данные для автозаполнения, начать отслеживать изменения и т.п
+// При потере фокуса - проверить введённые данные.
+
+// При фокусировке элемента происходит событие focus, а когда фокус исчезает, например пользователь кликает в другом месте экрана, происходит событие blur. Активировать или отменить фокус можно программно, вызвав в коде одноименные методы focus() и blur() у элемента.
+
+// const textInput = document.querySelector('.text-input');
 // const setFocusBtn = document.querySelector('[data-action="set"]');
 // const removeFocusBtn = document.querySelector('[data-action="remove"]');
 
-// setFocusBtn.addEventListener("click", () => {
+// setFocusBtn.addEventListener('click', () => {
 //   textInput.focus();
 // });
 
-// removeFocusBtn.addEventListener("click", () => {
+// removeFocusBtn.addEventListener('click', () => {
 //   textInput.blur();
 // });
 
-// textInput.addEventListener("focus", () => {
-//   textInput.value = "This input has focus";
+// textInput.addEventListener('focus', () => {
+//   textInput.value = 'This input has focus';
 // });
 
-// textInput.addEventListener("blur", () => {
-//   textInput.value = "";
+// textInput.addEventListener('blur', () => {
+//   textInput.value = '';
 // });
 
 // LESSON WITH THE TEACHER
 
 // KAHOOT
 
-// Лучше создавать объект со значениями, чем несколько переменных с навзанием elements
+// Лучше создавать объект со значениями, чем несколько переменных с названием elements
 
 // const elements = {
-//   clickMe: document.querySelector(".js-click"),
-//   box: document.querySelector(".js-box"),
-//   query: document.querySelector(".js-query"),
-//   form: document.querySelector(".js-form"),
+//   clickMe: document.querySelector('.js-click'),
+//   box: document.querySelector('.js-box'),
+//   query: document.querySelector('.js-query'),
+//   form: document.querySelector('.js-form'),
 // };
 
 // Коллбэк-функцию называть handlerClick (handler и тип события)
 
 // Событие click
 
-// elements.clickMe.addEventListener("click", handlerClick);
-// elements.box.addEventListener("click", handlerClick);
+// elements.clickMe.addEventListener('click', handlerClick);
+// elements.box.addEventListener('click', handlerClick);
 
 // let step = 0;
+
 // function handlerClick() {
 //   step += 50;
 //   elements.box.style.marginTop = `${step}px`;
@@ -310,16 +348,16 @@
 // }
 
 // function handlerClick(evt) {
-//   //   console.log(evt);
-//   //   console.log("currentTarget", evt.currentTarget);
-//   //   console.log("clickMe", elements.clickMe);
+//   console.log(evt);
+//   console.log('currentTarget', evt.currentTarget);
+//   console.log('clickMe', elements.clickMe);
 //   step += 50;
 //   evt.currentTarget.style.marginTop = `${step}px`;
 //   evt.currentTarget.style.marginLeft = `${step}px`;
 // }
 
-// elements.query.addEventListener("input", handlerSearch);
-// elements.query.addEventListener("change", handlerSearch);
+// elements.query.addEventListener('input', handlerSearch);
+// elements.query.addEventListener('change', handlerSearch);
 
 // function handlerSearch(evt) {
 //   //   console.log(evt);
@@ -327,17 +365,18 @@
 //   console.dir(evt.currentTarget.value);
 // }
 
-// // elements.query.addEventListener('blur', handlerSearch);
+// elements.query.addEventListener('blur', handlerSearch);
 
 // Коллбэк функция с объектом evt, свойства evt.currentTarget, evt.currentTarget.value
 // function handlerSearch(evt) {
-//     console.dir(evt.currentTarget);
-//     console.dir(evt.currentTarget.value);
+//   console.dir(evt.currentTarget);
+//   console.dir(evt.currentTarget.value);
+//   console.log(elements.query.value);
 // }
 
 // Событие submit
 
-// elements.form.addEventListener("submit", hundlerSubmit);
+// elements.form.addEventListener('submit', hundlerSubmit);
 
 // function hundlerSubmit(evt) {
 //   // Отмена действий браузера на собіьие по умолчанию
@@ -480,6 +519,7 @@ const cars = [
   },
 ];
 
+// Объект элементов
 const elements = {
   form: document.querySelector('.js-form'),
   container: document.querySelector('.js-list'),
@@ -488,7 +528,9 @@ const elements = {
 elements.container.style.display = 'flex';
 elements.container.style.flexWrap = 'wrap';
 elements.container.style.gap = '25px';
+elements.container.style.listStyle = 'none';
 
+// Образец для разметки
 //   {
 //     id: 1,
 //     car: "Honda",
@@ -520,26 +562,28 @@ elements.form.addEventListener('submit', handlerSearch);
 function handlerSearch(evt) {
   // отмена действия браузера по умолчанию
   evt.preventDefault();
-  //   console.log(evt.currentTarget.elements);
+  // console.log(evt.currentTarget.elements);
   // деструктуризация
   const { options, query } = evt.currentTarget;
-  //   console.log(options);
-  //   console.log(options.value);
-  //   console.log(query.value);
+  console.log(options);
+  console.log(options.value);
+  console.log(query.value);
 
   // Метод filter фильтрует объекты массива по ключу car или type на совпадение, что введено в input - query.value
-  //   const result = cars.filter((item) =>
-  //     item[options.value].toLowerCase().includes(query.value.toLowerCase())
-  //   );
+  const result = cars.filter((item) =>
+    // сравнивается элемент массива, объект один автомобиль, значение свойства свойства со значением в input - новый массив автомобилей
+    item[options.value].toLowerCase().includes(query.value.toLowerCase())
+  );
 
   // Вариант с  сортировкой, метод sort
-  const result = cars
-    .filter((item) =>
-      item[options.value].toLowerCase().includes(query.value.toLowerCase())
-    )
-    .sort((a, b) => a[options.value].localeCompare(b[options.value]));
 
-  console.log(result);
+  // const result = cars
+  //   .filter((item) =>
+  //     item[options.value].toLowerCase().includes(query.value.toLowerCase())
+  //   )
+  //   .sort((a, b) => a[options.value].localeCompare(b[options.value]));
+
+  // console.log(result);
 
   // Перерисовка разметки с новым массивом для функции разметки createMarkup
   elements.container.innerHTML = createMarkup(result);

@@ -133,6 +133,7 @@
 // console.log(book);
 
 // Короткие свойства	Shorthand properties
+
 // при объявлении объекта достаточно указать только имя свойства, а значение будет взято из переменной с аналогичным именем.
 
 // const name = "Henry Cibola";
@@ -148,9 +149,10 @@
 // console.log(user);
 
 // Вычисляемые свойства	Computed properties
+
 // Значением вычисляемого свойства может быть любое валидное выражение.
 
-const propName = "name";
+const propName = 'name';
 // const user = {
 //   age: 25,
 //   // Имя этого свойства будет взято из значения переменной propName
@@ -188,6 +190,7 @@ const propName = "name";
 
 // // Перед точкой стоит объект bookShelf,
 // // поэтому при вызове метода, this будет хранить ссылку на него.
+
 // bookShelf.getBooks();
 // // {books: ['The Last Kingdom'], getBooks: f}
 
@@ -217,7 +220,10 @@ const propName = "name";
 // Перебор объекта	Iteration
 
 // Цикл for...in	for...in loop
+
 // Для перебора объектов используется специальный цикл for...in, который перебирает ключи объекта object.
+
+// Переменная key доступная только в теле цикла. На каждой итерации в неё будет записано значение ключа (имя) свойства. Для того чтобы получить значение свойства с таким ключом (именем), используется синтаксис квадратных скобок.
 
 // const book = {
 //   title: "The Last Kingdom",
@@ -244,7 +250,7 @@ const propName = "name";
 // };
 
 // const dog = Object.create(animal);
-// dog.name = "Манго";
+// dog.name = 'Манго';
 
 // console.log(animal);
 // console.log(dog); // {name: 'Манго'}
@@ -252,12 +258,14 @@ const propName = "name";
 // console.log(dog.legs); // 4
 
 // // ❌ Возвращает true для всех свойств
-// console.log("name" in dog); // true
-// console.log("legs" in dog); // true
+// console.log('name' in dog); // true
+// console.log('legs' in dog); // true
+
+// Для того чтобы узнать есть в объекте собственное свойство или нет, используется метод hasOwnProperty(key), который возвращает true или false.
 
 // // ✅ Возвращает true только для собственных свойств
-// console.log(dog.hasOwnProperty("name")); // true
-// console.log(dog.hasOwnProperty("legs")); // false
+// console.log(dog.hasOwnProperty('name')); // true
+// console.log(dog.hasOwnProperty('legs')); // false
 
 // при переборе циклом for...in необходимо на каждой итерации добавить проверку на собственное свойство.
 
@@ -278,7 +286,16 @@ const propName = "name";
 //   // Если это не собственное свойство - ничего не делаем
 // }
 
+// Метод call() вызывает функцию с указанным значением this и индивидуально предоставленными аргументами.
+
+// for (const key in object) {
+//   if (Object.hasOwnProperty.call(object, key)) {
+//     const element = object[key];
+//   }
+// }
+
 // Метод Object.keys()	Object.keys() method
+
 // Object.keys(obj), который принимает объект и возвращает массив ключей его собственных свойств.
 
 // const book = {
@@ -301,8 +318,11 @@ const propName = "name";
 //   genres: ["historical prose", "adventure"],
 //   rating: 8.38,
 // };
+
+// Создаем массив ключей объекта
 // const keys = Object.keys(book);
 
+// Перебираем ключи объекта методом for...of
 // for (const key of keys) {
 //   // Ключ
 //   console.log(key);
@@ -311,6 +331,7 @@ const propName = "name";
 // }
 
 // Метод Object.values()	Object.values() method
+
 //  метод Object.values(obj) возвращает массив значений его собственных свойств
 
 // const book = {
@@ -318,9 +339,12 @@ const propName = "name";
 //   author: "Bernard Cornwell",
 //   rating: 8.38,
 // };
+
+// Создаем массив ключей объекта
 // const keys = Object.keys(book);
 // console.log(keys); // ['title', 'author', 'rating']
 
+// Создаем массив значений объекта
 // const values = Object.values(book);
 // console.log(values); // ['The Last Kingdom', 'Bernard Cornwell', 8.38]
 
@@ -344,10 +368,10 @@ const propName = "name";
 // for (const value of values) {
 //   total += value;
 // }
-
 // console.log(total); // 20
 
 // Метод Object.entries()	Object.entries() method
+
 // Метод Object.entries(obj) возвращает массив записей, каждым элементом которого будет еще один массив из 2-х элементов: имени свойства и значения этого свойства из объекта obj.
 
 // const book = {
@@ -369,22 +393,23 @@ const propName = "name";
 // // [["title", "The Last Kingdom"], ["author", "Bernard Cornwell"], ["rating", 8.38]]
 
 // Массив обьектов	Array of Objects
+
 // В стандартный набор повседневных задач разработчика входит манипуляция массивом однотипных объектов. Это значит что все объекты в массиве гарантированно будут иметь одинаковый набор свойств, но с разными значениями.
 
 // const books = [
 //   {
-//     title: "The Last Kingdom",
-//     author: "Bernard Cornwell",
+//     title: 'The Last Kingdom',
+//     author: 'Bernard Cornwell',
 //     rating: 8.38,
 //   },
 //   {
-//     title: "На берегу спокойных вод",
-//     author: "Роберт Шекли",
+//     title: 'На берегу спокойных вод',
+//     author: 'Роберт Шекли',
 //     rating: 8.51,
 //   },
 //   {
-//     title: "Сон смешного человека",
-//     author: "Федор Достоевский",
+//     title: 'Сон смешного человека',
+//     author: 'Федор Достоевский',
 //     rating: 7.75,
 //   },
 // ];
@@ -448,6 +473,7 @@ const propName = "name";
 // const keys = Object.keys(user);
 // console.log(keys);
 
+// Метод Object.freeze() замораживает объект: это значит, что он предотвращает добавление новых свойств к объекту, удаление старых свойств из объекта и изменение существующих свойств или значения их атрибутов перечисляемости, настраиваемости и записываемости. В сущности, объект становится эффективно неизменным. Метод возвращает замороженный объект.
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
 
 // Об'єкт
@@ -467,23 +493,27 @@ const propName = "name";
 
 // const objectKey = 'name';
 
+// Обращение с помощью квадратных скобок
 // console.log(user[objectKey]);
 // console.log(user['name']);
 
 // const user = {
-//   name: "Test user",
+//   name: 'Test user',
 //   skills: {
 //     html: false,
 //     css: true,
 //     react: false,
 //   },
 // };
+
 // console.log(user.name);
-// function getKey(key){ // 'name' 'skills'
-//     console.log(user[key])//user['name']
+
+// Функция для получения значения свойства по названию
+// function getKey(key) {
+//   console.log(user[key]);
 // }
-// getKey('name')
-// getKey('skills')
+// getKey('name');
+// getKey('skills');
 
 // const objectKey = "skills";
 // const skillKey = "css";
@@ -520,7 +550,9 @@ const propName = "name";
 //     react: false,
 //   },
 // };
+
 // Object.freeze(user.skills);
+
 // user.name = "Artem";
 // user.city = "Lviv";
 // user.skills.html = true;
@@ -542,20 +574,20 @@ const propName = "name";
 // Методи об'єкта
 
 // const user = {
-//   name: "Artem",
+//   name: 'Artem',
 //   skills: {
 //     html: false,
 //     css: true,
 //     react: false,
 //   },
 //   sayHello(city) {
-//     //  console.log(city);
+//     console.log(city);
 //     console.log(`Hello my name ${this.name}`);
 //   },
 // };
 
 // const user2 = {
-//   name: "Den",
+//   name: 'Den',
 //   skills: {
 //     html: true,
 //     css: true,
@@ -565,7 +597,7 @@ const propName = "name";
 // };
 
 // user2.sayHello();
-// user.sayHello("Lviv");
+// user.sayHello('Lviv');
 
 // console.log(user);
 
@@ -589,6 +621,8 @@ const propName = "name";
 // console.log(user);
 // console.log(testObj);
 
+// Метод hasOwnProperty()
+
 // for (const key in testObj) {
 //   if (testObj.hasOwnProperty(key)) {
 //     console.log(key, user[key]);
@@ -598,7 +632,7 @@ const propName = "name";
 // Метод Object.keys() - создает массив ключей
 
 // const user = {
-//   name: "Artem",
+//   name: 'Artem',
 //   skills: {
 //     html: false,
 //     css: true,
@@ -608,6 +642,7 @@ const propName = "name";
 // console.log(user);
 
 // // Создание массива ключей
+
 // const keys = Object.keys(user);
 // console.log(keys);
 
@@ -647,7 +682,7 @@ const propName = "name";
 // const entries = Object.entries(user.skills);
 // console.log(entries);
 
-// Practice //
+// PRACTICE //
 
 // Task - 1
 // Створи функцію яка буде приймати 3 параметри та формувати об'єкт покупки
@@ -657,6 +692,7 @@ const propName = "name";
 // Функція має повертати сформований об'єкт з ключами name, price, quantity, totalPrice.
 
 // Вариант решения используются короткие свойства
+
 // function createBasket(name, quantity, price) {
 //   const totalPrice = quantity * price;
 
@@ -669,8 +705,8 @@ const propName = "name";
 //   return basket;
 // }
 
-// console.log(createBasket("pizza", 3, 120));
-// console.log(createBasket("aplle", 13, 1200));
+// console.log(createBasket('pizza', 3, 120));
+// console.log(createBasket('aplle', 13, 1200));
 
 // Вариант решения используется полная запись и короткая
 // function createBasket(product, numb, cost) {
@@ -739,16 +775,16 @@ const propName = "name";
 // Функція повертає Імена юзерів (формат стрінги) в яких є дана книга ("Harry Potter") \\\ "Anna, Oleksii"
 
 // Массив объектов пользователей
-const friends = [
-  { name: "Anna", books: ["Bible", "Harry Potter"], age: 21 },
-  { name: "Bob", books: ["War and peace", "Romeo and Juliet"], age: 26 },
-  { name: "Alice", books: ["War and peace", "Romeo and Juliet"] },
-  {
-    name: "Oleksii",
-    books: ["Bible", "War and peace", "Harry Potter", "Romeo and Juliet"],
-    age: 26,
-  },
-];
+// const friends = [
+//   { name: 'Anna', books: ['Bible', 'Harry Potter'], age: 21 },
+//   { name: 'Bob', books: ['War and peace', 'Romeo and Juliet'], age: 26 },
+//   { name: 'Alice', books: ['War and peace', 'Romeo and Juliet'] },
+//   {
+//     name: 'Oleksii',
+//     books: ['Bible', 'War and peace', 'Harry Potter', 'Romeo and Juliet'],
+//     age: 26,
+//   },
+// ];
 
 // function getUser(arr, bookName) {
 //   const userNames = [];
@@ -771,7 +807,7 @@ const friends = [
 //   for (const user of arr) {
 //     //  console.log(user);
 //     //  console.log(user.name, user.hasOwnProperty("age"));
-//     if (user.hasOwnProperty("age")) {
+//     if (user.hasOwnProperty('age')) {
 //       totalAge += user.age;
 //       // console.log(totalAge);
 //     }
@@ -787,8 +823,8 @@ const friends = [
 //   let totalAge = 0;
 //   for (const user of arr) {
 //     console.log(user);
-//     console.log(user.name, "age" in user);
-//     if ("age" in user) {
+//     console.log(user.name, 'age' in user);
+//     if ('age' in user) {
 //       totalAge += user.age;
 //       // console.log(totalAge);
 //     }
@@ -799,42 +835,43 @@ const friends = [
 // console.log(getTotalAge(friends));
 
 // Task - 4
+
 // Массив объектов
+
 // 1 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати списoк імен учнів факультету
 // 2 Створити метод об'єкту який буде приймати 1 параметр назву факультету та повертати кількість очків факультета
 
 // const hogvarts = {
 //   griffindor: [
 //     {
-//       name: "Harry",
-
+//       name: 'Harry',
 //     },
 //     {
-//       name: "Hermiona",
+//       name: 'Hermiona',
 //       points: 19,
 //     },
 //     {
-//       name: "Ron",
+//       name: 'Ron',
 //       points: 14,
 //     },
 //   ],
 //   slizerin: [
 //     {
-//       name: "Draco",
+//       name: 'Draco',
 //       points: 17,
 //     },
 //     {
-//       name: "Goyl",
+//       name: 'Goyl',
 //       points: 14,
 //     },
 //     {
-//       name: "Crabbe",
+//       name: 'Crabbe',
 //       points: 5,
 //     },
 //   ],
 //   getUserList(faculty) {
 //     if (!(faculty in this)) {
-//       return "faculty not found";
+//       return 'faculty not found';
 //     }
 //     const students = [];
 //     for (const student of this[faculty]) {
@@ -844,16 +881,16 @@ const friends = [
 //     //  console.log(students);
 //     //  console.log(this[faculty]);
 
-//     return students.join(", ");
+//     return students.join(', ');
 //   },
 
 //   getTotalPoinst(faculty) {
 //     if (!(faculty in this)) {
-//       return "Faculted not found";
+//       return 'Faculted not found';
 //     }
 //     let getTotalPoinst = 0;
 //     for (const student of this[faculty]) {
-//       if ("points" in student) {
+//       if ('points' in student) {
 //         getTotalPoinst += student.points;
 //       }
 //     }
@@ -861,15 +898,17 @@ const friends = [
 //   },
 // };
 
-// // console.log(hogvarts);
+// console.log(hogvarts);
 
-// console.log(hogvarts.getUserList("griffindor"));
-// console.log(hogvarts.getUserList("slizerin"));
-// console.log(hogvarts.getUserList("slitherin"));
+// console.log(hogvarts.getUserList('griffindor'));
+// console.log(hogvarts.getUserList('slizerin'));
+// console.log(hogvarts.getUserList('slitherin'));
 
-// console.log(hogvarts.getTotalPoinst("griffindor"));
-// console.log(hogvarts.getTotalPoinst("slizerin"));
-// console.log(hogvarts.getTotalPoinst("slitherin"));
+// console.log(hogvarts.getTotalPoinst('griffindor'));
+// console.log(hogvarts.getTotalPoinst('slizerin'));
+// console.log(hogvarts.getTotalPoinst('slitherin'));
+
+// Вопросы
 
 // const user = {
 //   name: "Test user",

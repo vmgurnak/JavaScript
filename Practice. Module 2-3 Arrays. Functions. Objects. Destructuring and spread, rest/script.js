@@ -1,5 +1,7 @@
 // Practice.
+
 // Module 2 - 3
+
 // Arrays
 // Functions.
 // Objects.
@@ -127,47 +129,47 @@ function fillArr(length, elem) {
   return arr;
 }
 
-console.log(fillArr(3, "a"));
+console.log(fillArr(3, 'a'));
 // возвращает["a", "a", "a"]
 
 // Task 2 --------------------------------------
 
 // Напиши скрипт, который сравнивает два массива и выведет в консоль результат все ли элементы одинаковые
 
-const arr1 = [1, 4, 6, "color", 324, 232, "list", 11, 9, "dream", 34, 0, -30];
+const arr1 = [1, 4, 6, 'color', 324, 232, 'list', 11, 9, 'dream', 34, 0, -30];
 
 const arr2 = [
   10,
   4,
   6,
-  "color",
+  'color',
   324,
   232,
-  "listen  ",
+  'listen  ',
   11,
   9,
-  "dream",
+  'dream',
   40,
   0,
   -30,
 ];
 
-const arr3 = [1, 4, 6, "color", 324, 232, "list", 11, 9, "dream", 34, 0, -30];
+const arr3 = [1, 4, 6, 'color', 324, 232, 'list', 11, 9, 'dream', 34, 0, -30];
 
-const arr4 = [10, 254, 6, "width", 324, 232, "listen", 11, 9, "dream", 40];
+const arr4 = [10, 254, 6, 'width', 324, 232, 'listen', 11, 9, 'dream', 40];
 
 function arrCompare(array1, array2) {
   // Сравнение массивов по длине на ложь
   if (array1.length !== array2.length) {
-    return console.log("Массивы разной длины");
+    return console.log('Массивы разной длины');
   }
   // Цикл for of перебор массива array1, сравнивает на ложь, есть ли элементы маасива arr1 в массиве arr2
   for (const element of array1) {
     if (!array2.includes(element)) {
-      return console.log("Массивы не одинаковые");
+      return console.log('Массивы не одинаковые');
     }
   }
-  console.log("Массивы одинаковые");
+  console.log('Массивы одинаковые');
 }
 
 arrCompare(arr1, arr4);
@@ -184,15 +186,15 @@ const array = [
   1,
   0,
   54,
-  "doc",
+  'doc',
   null,
-  "jpg",
+  'jpg',
   underfined,
-  "",
-  "png",
-  "exe",
+  '',
+  'png',
+  'exe',
   false,
-  "mp4",
+  'mp4',
   NaN,
-  "hbs",
+  'hbs',
 ];

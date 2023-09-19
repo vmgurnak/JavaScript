@@ -407,6 +407,8 @@ const languages = ['C', 'C++', 'Java', 'JavaScript'];
 // console.log(result);
 // console.log(str);
 
+// ПРАКТИКА
+
 // Task-1
 // Напиши скрипт який буде перебирати масив та видаляти з нього (мутувати) всі елементи що не є типом даних Number.
 
