@@ -14,20 +14,20 @@
 
 // Всплытие гарантирует, что клик по #descendant вызовет обработчик клика, если он есть, сначала на самом #descendant, затем на элементе #child, далее на элементе #parent и так далее вверх по цепочке предков до window. Поэтому, если в примере кликнуть на #descendant, то последовательно выведутся alert для descendant → child → parent.
 
-// const parent = document.querySelector("#parent");
-// const child = document.querySelector("#child");
-// const descendant = document.querySelector("#descendant");
+// const parent = document.querySelector('#parent');
+// const child = document.querySelector('#child');
+// const descendant = document.querySelector('#descendant');
 
-// parent.addEventListener("click", () => {
-//   alert("Parent click handler");
+// parent.addEventListener('click', () => {
+//   alert('Parent click handler');
 // });
 
-// child.addEventListener("click", () => {
-//   alert("Child click handler");
+// child.addEventListener('click', () => {
+//   alert('Child click handler');
 // });
 
-// descendant.addEventListener("click", () => {
-//   alert("Descendant click handler");
+// descendant.addEventListener('click', () => {
+//   alert('Descendant click handler');
 // });
 
 // Свойство event.target	event.target property
@@ -37,11 +37,11 @@
 // event.target - это ссылка на исходный элемент на котором произошло событие, в процессе всплытия он неизменен.
 // event.currentTarget - это ссылка текущий элемент до которого дошло всплытие, на нём сейчас выполняется обработчик события.
 
-// const parent = document.querySelector("#parent");
+// const parent = document.querySelector('#parent');
 
-// parent.addEventListener("click", (event) => {
-//   console.log("event.target: ", event.target);
-//   console.log("event.currentTarget: ", event.currentTarget);
+// parent.addEventListener('click', (event) => {
+//   console.log('event.target: ', event.target);
+//   console.log('event.currentTarget: ', event.currentTarget);
 // });
 
 // Прекращение всплытия	Bubbling stop
@@ -52,22 +52,22 @@
 // const child = document.querySelector("#child");
 // const descendant = document.querySelector("#descendant");
 
-// parent.addEventListener("click", () => {
+// parent.addEventListener('click', () => {
 //   alert(
-//     "Parent click handler. This alert will not appear when clicking on Descendant, the event will not reach here!"
+//     'Parent click handler. This alert will not appear when clicking on Descendant, the event will not reach here!'
 //   );
 // });
 
-// child.addEventListener("click", (event) => {
-//   //   event.stopPropagation();
-//   alert(
-//     "Child click handler. This alert will not appear when clicking on Descendant, the event will not reach here!"
-//   );
-// });
-
-// descendant.addEventListener("click", (event) => {
+// child.addEventListener('click', (event) => {
 //   event.stopPropagation();
-//   alert("Descendant click handler");
+//   alert(
+//     'Child click handler. This alert will not appear when clicking on Descendant, the event will not reach here!'
+//   );
+// });
+
+// descendant.addEventListener('click', (event) => {
+//   // event.stopPropagation();
+//   alert('Descendant click handler');
 // });
 
 // Делегирование событий	Event Delegation
@@ -75,19 +75,19 @@
 // Палитра цветов	Color palette
 
 // // Поиск div.color-palette
-// const colorPalette = document.querySelector(".color-palette");
+// const colorPalette = document.querySelector('.color-palette');
 // // Поиск p.output
-// const output = document.querySelector(".output");
+// const output = document.querySelector('.output');
 
 // // Слушатель по click на div.color-palette
-// colorPalette.addEventListener("click", selectColor);
+// colorPalette.addEventListener('click', selectColor);
 
 // // This is where delegation «magic» happens
 
 // // Коллбэк-функция для слушетеля
 // function selectColor(event) {
 //   // проверяем цель клика, чтобы это была кнопка, мы не хотим обрабатывать клики в элемент-контейнер. Для проверки типа элемента используем свойство nodeName.
-//   if (event.target.nodeName !== "BUTTON") {
+//   if (event.target.nodeName !== 'BUTTON') {
 //     return;
 //   }
 
@@ -112,12 +112,12 @@
 //   for (let i = 0; i < 64; i += 1) {
 //     const color = getRandomColor();
 //     //   создание кнпопки
-//     const item = document.createElement("button");
+//     const item = document.createElement('button');
 //     // Добавление атрибутов, класса, стиля
-//     item.type = "button";
+//     item.type = 'button';
 //     item.dataset.color = color;
 //     item.style.backgroundColor = color;
-//     item.classList.add("item");
+//     item.classList.add('item');
 //     //   Добавление item в массив items
 //     items.push(item);
 //   }
@@ -130,11 +130,11 @@
 //   return `#${getRandomHex()}${getRandomHex()}${getRandomHex()}`;
 // }
 
-// // Функция для создания двухзначного числа в в 16 систеем
+// // Функция для создания двухзначного числа в в 16 системе
 // function getRandomHex() {
 //   return Math.round(Math.random() * 256)
 //     .toString(16)
-//     .padStart(2, "0");
+//     .padStart(2, '0');
 // }
 
 // Занятие с преподователем
