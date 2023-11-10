@@ -56,9 +56,18 @@
 
 // Псевдомассив arguments	arguments pseudo-array
 
+// Псевдомассив arguments - Доступ к списку всех аргументов можно получить при помощи специальной переменной arguments, которая доступна только внутри функции и хранит все аргументы как псевдомассив.
+
+// пример использования arguments в функции, которая умножает любое количество аргументов:
+
 // function multiply() {
 //   let total = 1;
-
+//   // Псевдомассив arguments
+//   console.log(arguments);
+//   // Преобразование псевдомассива в массив Array.from
+//   const args = Array.from(arguments);
+//   console.log(args);
+//   // Перебор псевдомассива циклом for of
 //   for (const argument of arguments) {
 //     total *= argument;
 //   }
@@ -71,12 +80,22 @@
 // console.log(multiply(1, 2, 3, 4, 5)); //  120
 
 // Преобразование псевдомассива	Pseudo-array conversion
+
 // Используя метод Array.from(), который создаст массив из псевдомассива.
 
+// function fn() {
+//   // В переменной args будет полноценный массив
+//   const args = Array.from(arguments);
+// }
+
 // Используя операцию ... (rest), она позволяет собрать произвольное количество элементов, в нашем случае аргументов, в массив и сохранить его в переменную. Собираем все аргументы используя операцию rest прямо в подписи функции.
+
 // function fn(...args) {
 //   // В переменной args будет полноценный массив
+//   return args;
 // }
+
+// console.log(fn(1, 2, 3, 4, 5));
 
 // Паттерн «Ранний возврат»	"Return early" pattern
 
@@ -182,18 +201,18 @@
 // Стек вызовов	Call Stack
 
 // function fnA() {
-//   console.log("Лог внуртри функции fnA до вызова fnB");
+//   console.log('Лог внуртри функции fnA до вызова fnB');
 //   fnB();
-//   console.log("Лог внуртри функции fnA после вызова fnB");
+//   console.log('Лог внуртри функции fnA после вызова fnB');
 // }
 
 // function fnB() {
-//   console.log("Лог внутри функции fnB");
+//   console.log('Лог внутри функции fnB');
 // }
 
-// console.log("Лог перед вызовом fnA");
+// console.log('Лог перед вызовом fnA');
 // fnA();
-// console.log("Лог после вызова fnA");
+// console.log('Лог после вызова fnA');
 
 // // "Лог перед вызовом fnA"
 // // "Лог внуртри функции fnA до вызова fnB"
@@ -202,6 +221,7 @@
 // // "Лог после вызова fnA"
 
 // Стек вызовов	Call stack
+
 // function bar() {
 //   console.log("bar");
 // }
@@ -244,27 +264,31 @@
 // }
 
 // const numbers = [1, 2, 3, 4, 5];
+// console.log(numbers);
 // foo(numbers);
 // console.log(numbers);
 
+// Вызов функции для функционлаьного выражения возможен после объеявления
 // greet();
 // const greet = function () {
-//   console.log("Welcome");
+//   console.log('Welcome');
 // };
 
+// Для обычного объявления  можно вызывать функцию в любом месте
 // greet();
 // function greet() {
 //   console.log("Welcome");
 // }
 
+// Псевдомассив аргумент
 // function foo() {
 //   console.log(arguments);
 // }
 
-// // foo([1, 2, 3]);
-// foo(5, "Mango", true);
+// foo([1, 2, 3]);
+// foo(5, 'Mango', true);
 
-// ЛЕЦИЯ
+// ЛЕКЦИЯ
 
 // Function expression
 
@@ -286,19 +310,21 @@
 //   return valA;
 // }
 
-// console.log(foo);
+// console.dir(foo);
 // console.log(foo(numbers));
 
 // Простые типы данных запоминание по значением, отдельные ячейки памяти
+
 // let a = 12;
 // let b = a;
 
 // a += 20;
 
-// console.log("a", a);
-// console.log("b", b);
+// console.log('a', a);
+// console.log('b', b);
 
 // Сложные типы данных присовение по ссылке, обращение к одной и той же ячейке памяти
+
 // const a = [1, 2, 3];
 // const b = a;
 
@@ -316,9 +342,22 @@
 
 // hoisting https://codeguida.com/post/199
 
+// Function Expression
+
+//  var x = function(){
+//    return true;
+//  };
+
+// Function Declaration
+
+//     function x(){
+//       return true;
+//     };
+
 // Псевдомасив arguments
 
 // Псевдомассив arguments без методов, можно перебирать аргументы циклами
+
 // function getSum() {
 //   console.log(arguments);
 
@@ -447,32 +486,21 @@
 // let someValue = 2;
 
 // function checkScope() {
-//     someValue = 42;
-//     return someValue;
+//   someValue = 42;
+//   return someValue;
 // }
 
-// checkScope()
+// checkScope();
 
 // console.log(someValue);
 
 // Example 7
-// let someArray = ["Hello", "my", "name", "scope"];
+
+// let someArray = ['Hello', 'my', 'name', 'scope'];
 
 // function checkScope(arr) {
 //   // let arr = someArray;
-//   arr.splice(0, 3);
-// }
-
-// checkScope(someArray);
-
-// console.log(someArray);
-
-// let someArray = ["Hello", "my", "name", "scope"];
-
-// function checkScope(arr) {
-//   // let arr = someArray;
-//   arr = Array.from(arr);
-//   arr.splice(0, 3);
+//   arr.splice(0,2);
 // }
 
 // checkScope(someArray);
@@ -480,18 +508,19 @@
 // console.log(someArray);
 
 // Переменные в разных областях вдимости
+
 // const name = 10;
 
 // if (true) {
 //   const name = 15;
-//   console.log("block", name);
+//   console.log('block', name);
 //   if (true) {
 //     const name = 44;
-//     console.log("block 2", name);
+//     console.log('block 2', name);
 //   }
 // }
-// console.log("global", name);
-// // console.log(qwerty);
+// console.log('global', name);
+// console.log(qwerty);
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/name
 
@@ -518,7 +547,7 @@
 // 2 - Число яке потрібно порівнювати з усіма елементами масиву.
 // Функція повертає повідомлення про успішну або не успішну перевірку (повідомлення "Success ✅" "Fail ❌")
 
-const numbers = [25, 12, 67, 40, 18];
+// const numbers = [25, 12, 67, 40, 18];
 
 // function checkValue(arr, target) {
 //   let message = "Success ✅";
@@ -577,7 +606,7 @@ const numbers = [25, 12, 67, 40, 18];
 // Напиши функцію getRectArea(dimensions) для обчислення площі прямокутника зі сторонами, значення яких будуть передані до параметра dimensions у вигляді рядка. Значення гарантовано розділені пробілом.
 
 // function getRectArea(dimensions) {
-//   const arr = dimensions.split(" ");
+//   const arr = dimensions.split(' ');
 //   console.log(arr);
 
 //   const firstValue = Number(arr[0]);
@@ -586,8 +615,8 @@ const numbers = [25, 12, 67, 40, 18];
 //   return firstValue * secondValue;
 // }
 
-// console.log(getRectArea("8 11"));
-// console.log(getRectArea("15 11"));
+// console.log(getRectArea('8 11'));
+// console.log(getRectArea('15 11'));
 
 // // Example 4
 // let someValue = 2;
@@ -608,6 +637,8 @@ const numbers = [25, 12, 67, 40, 18];
 // removeCourse(name) - видаляє курс із колекції
 // updateCourse(oldName, newName) - змінює ім'я на нове
 
+// Добавление в колекцию
+
 // const courses = ["HTML", "CSS", "JavaScript", "React", "PostgreSQL"];
 
 // function addCourse(name) {
@@ -620,6 +651,8 @@ const numbers = [25, 12, 67, 40, 18];
 // addCourse("Express");
 // console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
 // console.log(addCourse("CSS")); // 'Ви вже маєте такий курс'
+
+// Удаление из коллекции
 
 // const courses = ["HTML", "CSS", "JavaScript", "React", "PostgreSQL"];
 
@@ -641,13 +674,17 @@ const numbers = [25, 12, 67, 40, 18];
 // 'Курс із таким ім'ям не знайдено'
 
 // Рефакторинг с оператором ~
+
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT
 
-// console.log("~", ~-1); // 0
+// Bitwise NOT (~) - оператор Тильда используется. когда нужно сделать поиск элемента по индексу, проверить, есть элемент или нет
+//  Формула NOT (~) -(x + 1)
+
+// console.log('~', ~-1); // 0
 // console.log(-(-1 + 1)); // 0
-// // -(x + 1)
-// // -1 => true => 0 => false
-// // 0 => false => -1 true
+
+// -1 => true => 0 => false
+// 0 => false => -1 true
 
 // const courses = ["HTML", "CSS", "JavaScript", "React", "PostgreSQL"];
 
@@ -665,6 +702,8 @@ const numbers = [25, 12, 67, 40, 18];
 // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL']
 // console.log(removeCourse("Vue"));
 // 'Курс із таким ім'ям не знайдено'
+
+// Переименование
 
 // const courses = ["HTML", "CSS", "Express", "JavaScript", "React", "PostgreSQL"];
 // console.log(courses);

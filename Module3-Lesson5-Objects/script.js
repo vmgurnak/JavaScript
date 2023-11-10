@@ -313,16 +313,16 @@ const propName = 'name';
 // Скомбинировав результат Object.keys() и цикл for...of можно удобно перебрать собственные свойства объекта, не прибегая к использованию архаического цикла for...in с проверками принадлежности свойств.
 
 // const book = {
-//   title: "The Last Kingdom",
-//   author: "Bernard Cornwell",
-//   genres: ["historical prose", "adventure"],
+//   title: 'The Last Kingdom',
+//   author: 'Bernard Cornwell',
+//   genres: ['historical prose', 'adventure'],
 //   rating: 8.38,
 // };
 
-// Создаем массив ключей объекта
+// // Создаем массив ключей объекта
 // const keys = Object.keys(book);
 
-// Перебираем ключи объекта методом for...of
+// // Перебираем ключи объекта методом for...of
 // for (const key of keys) {
 //   // Ключ
 //   console.log(key);

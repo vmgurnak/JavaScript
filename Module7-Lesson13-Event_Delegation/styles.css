@@ -35,9 +35,9 @@
   transform: scale(1.1);
 } */
 
-/* Занятие с преподователем */
+/* ЗАНЯТИЕ С ПРЕПОДОВАТЕЛЕМ */
 
-/* .box {
+.box {
   width: 100px;
   height: 100px;
 }
@@ -61,7 +61,7 @@
 
 .item-red {
   background-color: red;
-} */
+}
 
 ul {
   display: flex;

@@ -68,6 +68,10 @@
 // "
 
 // fetch(url, options);
+
+// console.log(window);
+// console.dir(window.fetch);
+
 // "url - путь к данным на бэкенде которые необходимо получить, создать или изменить. Обязательный аргумент.
 // options - объект настроек запроса: метод (по умолчанию GET), заголовки, тело и т. д. Необязательный аргумент."
 
@@ -96,6 +100,7 @@
 //     return response.json();
 //   })
 //   .then((data) => {
+//     console.log(data);
 //     // Data handling
 //   })
 //   .catch((error) => {
@@ -108,29 +113,43 @@
 // const userList = document.querySelector('.user-list');
 
 // fetchUsersBtn.addEventListener('click', () => {
+//   // Вызываем запрос на бэкенд fetchUsers(), Получаем массив объектов с пользователями .then, Вызываем функцию для разметки renderUserList()
 //   fetchUsers()
-//     .then((users) => renderUserList(users))
+//     .then((users) => {
+//       console.log(users);
+//       renderUserList(users);
+//     })
 //     .catch((error) => console.log(error));
 // });
 
+// // Функция для запроса на бэкенд, возвращает массив объектов
 // function fetchUsers() {
 //   return fetch('https://jsonplaceholder.typicode.com/users').then(
 //     (response) => {
+//       // Значение промиса, который возвращает метод fetch(), это объект со служебной информацией о состоянии ответа сервера.
+//       console.log(response);
 //       if (!response.ok) {
 //         throw new Error(response.status);
 //       }
+//       // console.log(response.json());
+//       // промис - массив объектов с пользователями
 //       return response.json();
 //     }
 //   );
 // }
 
+// // Функция для рендеринга разметки
 // function renderUserList(users) {
 //   const markup = users
 //     .map((user) => {
+//       // Объект одного пользователя
+//       console.log(user);
 //       return `<li>
 //           <p><b>Name</b>: ${user.name}</p>
 //           <p><b>Email</b>: ${user.email}</p>
 //           <p><b>Company</b>: ${user.company.name}</p>
+//           <p><b>Phone</b>: ${user.phone}</p>
+//           <p><b>Website</b>: ${user.website}</p>
 //         </li>`;
 //     })
 //     .join('');
@@ -157,14 +176,14 @@
 // });
 
 // function fetchUsers() {
-//   return fetch('https://jsonplaceholder.typicode.com/users').then(
-//     (response) => {
-//       if (!response.ok) {
-//         throw new Error(response.status);
-//       }
-//       return response.json();
+//   return fetch(
+//     'https://jsonplaceholder.typicode.com/users?_limit=5&_sort=name'
+//   ).then((response) => {
+//     if (!response.ok) {
+//       throw new Error(response.status);
 //     }
-//   );
+//     return response.json();
+//   });
 // }
 
 // function renderUserList(users) {
@@ -191,7 +210,10 @@
 //   _sort: 'name',
 // });
 
+// console.log(searchParams);
 // console.log(searchParams.toString()); // "_limit=5&_sort=name"
+
+// При интерполяции значения в шаблонных строках происходит его неявное преобразование к строке, поэтому не нужно вызывать метод toString() при составлении URL. Не забывайте указывать начало строки запроса символом ?.
 
 // const url = `https://jsonplaceholder.typicode.com/users?${searchParams}`;
 // console.log(url); // "https://jsonplaceholder.typicode.com/users?_limit=5&_sort=name"
@@ -259,9 +281,54 @@
 // # Public API
 // Access-Control-Allow-Origin: *
 
-// Занятие с преподавателем
+// ЗАНЯТИЕ С ПРЕПОДОВАТЕЛЕМ
 
-// ***************Практика*************** \\
+// *********Links********* \\
+// https://www.postman.com/downloads/
+// https://rickandmortyapi.com/documentation
+// https://www.weatherapi.com/docs/
+// https://uk.wikipedia.org/wiki/SOAP
+
+// Приклад документації до API
+
+// https://rickandmortyapi.com/documentation/#rest
+
+// *********Fetch********* \\
+
+// *********Обробка помилок та парсинг відповіді********* \\
+
+// XMLHttpRequest
+// const options = {
+// method: 'GET',
+// }
+
+// Объект параметров, передается вторым параметром в feth
+// const options = {
+//   method: 'GET',
+// };
+
+// Метод fetch запрос на бэкенд
+// console.log(fetch('https://rickandmortyapi.com/api/character', options));
+
+// fetch('https://rickandmortyapi.com/api/character', options)
+//   // ответ с параметрами запроса на бэкенд
+//   .then((response) => {
+//     console.log(response);
+//     // проверка, что ответ пришел ок, если нет throw
+//     if (!response.ok) {
+//       throw new Error(response.statusText);
+//     }
+//     //   JSON.parse() уже не используем, есть встроенный метод
+//     return response.json();
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// ***************ПРАКТИКА*************** \\
 
 // ФУНКЦИОНАЛ ДЛЯ ПОГОДЫ В ГОРОДЕ
 
@@ -304,28 +371,36 @@ function handlerSearch(evt) {
   console.dir(city.value);
   console.dir(days.value);
 
+  // Вызов функции запроса на бэкенд, получение данных и создание разметки - Call the request function on the backend, get data and create markup
   serviceWeather(city.value, days.value)
-    .then(
-      (data) =>
-        (elements.list.innerHTML = createMarkup(data.forecast.forecastday))
-    )
+    .then((data) => {
+      console.log(data);
+      console.log(data.forecast.forecastday);
+      elements.list.innerHTML = createMarkup(data.forecast.forecastday);
+    })
     .catch((err) => console.log(err))
+    // Очистка формы после запроса - Clearing the form after a request
     .finally(() => evt.target.reset());
 }
 
+// Функция запроса на бэкенд - Backend request function
 function serviceWeather(city, days) {
   const BASE_URL = 'http://api.weatherapi.com/v1';
   const END_POINT = '/forecast.json';
   const API_KEY = '6410346f89264d6e919165208231505';
 
+  // экземпляр класса URLSearchParams для составлении строки параметров - an instance of the URLSearchParams class for composing a string of parameters
   const params = new URLSearchParams({
     key: API_KEY,
     q: city,
     days: days,
-    lang: 'uk',
+    lang: 'ru',
   });
 
+  // console.log(params.toString());
+
   return fetch(`${BASE_URL}${END_POINT}?${params}`).then((resp) => {
+    console.log(resp);
     if (!resp.ok) {
       throw new Error(resp.statusText);
     }
@@ -333,9 +408,11 @@ function serviceWeather(city, days) {
     return resp.json();
   });
 
+  // Без экземпляра класса new URLSearchParams
   // fetch(`${BASE_URL}${END_POINT}?key=${API_KEY}&q=${city}&days=${days}&lang=uk`)
 }
 
+// Функция для разметки - Markup function
 function createMarkup(arr) {
   return arr
     .map(

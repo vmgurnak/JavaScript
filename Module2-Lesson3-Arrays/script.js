@@ -60,7 +60,7 @@
 
 // Операторы break и continue	break and continue statements
 
-// Будем искать имя клиента в массиве имен, если нашли - прервем цикл, так как нет смысла искать дальше, имена у нас уникальные.
+// // Будем искать имя клиента в массиве имен, если нашли - прервем цикл, так как нет смысла искать дальше, имена у нас уникальные.
 // const clients = ['Mango', 'Poly', 'Ajax'];
 // const clientNameToFind = 'Poly';
 // let message;
@@ -97,6 +97,7 @@
 // console.log(message); // Клиент с таким именем есть в базе данных!
 
 // Используем цикл для вывода только чисел больше определенного значения.
+
 // const numbers = [1, 3, 14, 18, 4, 7, 29, 6, 34];
 // const threshold = 15;
 
@@ -111,6 +112,7 @@
 // }
 
 // Методы массива
+
 // Методы split() и join()	split() and join() methods
 
 // Метод split(delimiter) превращает строку в массив, «разбив» её по разделителю delimiter. Если разделитель это пустая строка, то получится массив отдельных символов. Разделителем может быть один или несколько символов.
@@ -140,6 +142,7 @@
 // Проверка множественных условий с includes()	Checking multiple conditions with includes()
 
 // // Выносим варианты в массив
+
 // const redFruits = ['apple', 'strawberry', 'cherry', 'cranberries'];
 // const fruit = 'cherry';
 // // Проверяем наличие элемента
@@ -167,7 +170,8 @@
 // numbers.push(4);
 // console.log(numbers); // [1, 2, 3, 4]
 
-// numbers.push(5);
+// // numbers.push(5);
+// console.log(numbers.push(5));
 // console.log(numbers); // [1, 2, 3, 4, 5]
 
 // Метод pop() удаляет последний элемент из конца массива и возвращает удаленный элемент. Если массив пустой, метод возвращает undefined.
@@ -190,6 +194,7 @@
 // console.log(numbers); // []
 
 // Метод slice()	slice() method
+// slice(begin, end) возвращает новый массив, содержащий копию части исходного массива, не изменяя его. Копия делается от begin и до, но не включая, end
 
 // const clients = ['Mango', 'Ajax', 'Poly', 'Kiwi'];
 // console.log(clients.slice(1, 3)); // ["Ajax", "Poly"]
@@ -204,6 +209,11 @@
 // Метод splice()	splice() method
 
 // Удаление	Removal
+
+// position - указывает позицию (индекс) первого элемента для удаления
+// num - определяет количество удаляемых элементов
+// мутирующий метод, влияет на начальный масив
+
 // const scores = [1, 2, 3, 4, 5];
 
 // // Удаляем три элемента массива, начиная с первого элемента (индекс 0)
@@ -218,6 +228,8 @@
 
 // Добавление	Addition
 
+// splice(position, 0, new_element_1, new_element_2, ...)
+
 // const colors = ['red', 'green', 'blue'];
 
 // colors.splice(1, 0, 'yellow', 'pink');
@@ -225,7 +237,9 @@
 
 // Замена	Replacement
 
-const languages = ['C', 'C++', 'Java', 'JavaScript'];
+// splice(position, num, new_element_1, new_element_2, ...)
+
+// const languages = ['C', 'C++', 'Java', 'JavaScript'];
 
 // Заменяем элемент с индексом 1 на новый
 // languages.splice(1, 1, 'Python');
@@ -351,6 +365,7 @@ const languages = ['C', 'C++', 'Java', 'JavaScript'];
 // console.log(numbers);
 
 // unshift shift
+
 // unshift - добавляет элементы в начале массива
 // shift - удаляет первый элемент массива
 
@@ -362,6 +377,7 @@ const languages = ['C', 'C++', 'Java', 'JavaScript'];
 // console.log(numbers);
 
 //slice - возвращает новый массив, содержащий копию части исходного массива, не изменяя его
+
 // const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 // const result = numbers.slice(2, 5);
 // console.log(result);
@@ -370,6 +386,7 @@ const languages = ['C', 'C++', 'Java', 'JavaScript'];
 // splice - мутирующий метод, влияет изменяет начальный массиа
 
 // const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+
 // удаление;
 // const result = numbers.splice(2, 2);
 // console.log(result);
@@ -383,7 +400,7 @@ const languages = ['C', 'C++', 'Java', 'JavaScript'];
 // numbers.splice(2, 0, 'hello world');
 // console.log(numbers);
 
-//includes - возвращает true при совпадении элемента
+// includes - возвращает true при совпадении элемента
 // const str = ['a', 'b', 'c', 'd'];
 
 // console.log(str.includes('c')); // true
@@ -418,7 +435,7 @@ const languages = ['C', 'C++', 'Java', 'JavaScript'];
 // В этом варианте просходит переиндексация элементов, если не возвращать счетчик на минус 1, элементы будут пропускаться
 // for (let i = 0; i < arrA.length; i += 1) {
 //   if (typeof arrA[i] === 'number') {
-//     //  console.log(arrA[i]);
+//    //  console.log(arrA[i]);
 //     continue;
 //   }
 //   arrA.splice(i, 1);
@@ -438,7 +455,7 @@ const languages = ['C', 'C++', 'Java', 'JavaScript'];
 
 // console.log(arrA);
 
-// Третий вариант решения - перебор массива с конца при реиндексации подъезжает уже переверенный элемент
+// Третий вариант решения - перебор массива с конца при реиндексации подъезжает уже проверенный элемент
 
 // const arrA = [3, 'Hello', null, 42, false];
 
@@ -451,7 +468,7 @@ const languages = ['C', 'C++', 'Java', 'JavaScript'];
 // console.log(arrA);
 
 // Та же задача другой массив
-const arrB = ['world', true, 22, 41, undefined];
+// const arrB = ['world', true, 22, 41, undefined];
 
 // for (let i = arrB.length - 1; i >= 0; i -= 1) {
 //   console.log(arrB[i]);
@@ -521,7 +538,8 @@ const arrB = ['world', true, 22, 41, undefined];
 
 // Task-5
 // Напиши скрипт який буде перевіряти чи елементи в масиві розташовані в порядку зростання, якщо ні то замінювати елемент на вірнi
-const numbers = [1, 2, 3, 1, 5, 6, 1, 1, 9];
+
+// const numbers = [1, 2, 3, 1, 5, 6, 1, 1, 9];
 
 // for (let i = 1; i < numbers.length; i += 1) {
 //   const currentEl = numbers[i];

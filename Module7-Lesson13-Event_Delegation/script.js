@@ -48,9 +48,9 @@
 
 // метод stopPropagation() только препятствует продвижению события дальше, останавливает всплытие
 
-// const parent = document.querySelector("#parent");
-// const child = document.querySelector("#child");
-// const descendant = document.querySelector("#descendant");
+// const parent = document.querySelector('#parent');
+// const child = document.querySelector('#child');
+// const descendant = document.querySelector('#descendant');
 
 // parent.addEventListener('click', () => {
 //   alert(
@@ -59,7 +59,7 @@
 // });
 
 // child.addEventListener('click', (event) => {
-//   event.stopPropagation();
+//   // event.stopPropagation();
 //   alert(
 //     'Child click handler. This alert will not appear when clicking on Descendant, the event will not reach here!'
 //   );
@@ -154,6 +154,16 @@
 
 // const container = document.querySelector('.js-container');
 // // const box = document.querySelector('.js-box')
+
+// console.log(container);
+// console.log(container.children);
+// // Распыление на значения
+// console.log(...container.children);
+// // Создание нового массива
+// console.log([...container.children]);
+
+// // Псевдомассив children div.container, сщздание массива для метода forEach
+// // Добавление слушателя каждому div
 // [...container.children].forEach((box) => {
 //   box.addEventListener('click', handlerClick);
 // });
@@ -162,12 +172,16 @@
 //   console.log(evt.currentTarget);
 // }
 
+// evt.currentTarget;evt.target;
+
 // Один слушаетль событий на контейнере
+
+// const container = document.querySelector('.js-container');
 
 // container.addEventListener('click', handlerClick);
 
 // function handlerClick(evt) {
-//   // console.log('currentTarget', evt.currentTarget);
+//   console.log('currentTarget', evt.currentTarget);
 //   // if (evt.currentTarget === evt.target) {
 //   //     return;
 //   // }
@@ -198,18 +212,19 @@
 // function handlerClick1(evt) {
 //   console.log(evt.target);
 //   console.log('fn2');
-//   evt.stopImmediatePropagation();
+//   // evt.stopImmediatePropagation();
 // }
+
 // function handlerClick2(evt) {
 //   console.log(evt.target);
 //   console.log('fn3');
 // }
 
-// Practice
+// PRACTICE
 
 // Создание карточек с продуктами
 // Каждая карточка имеет img и price
-// Сделать деленгирование собітий на всех карточках
+// Сделать делегирование событий на всех карточках
 // При клике на карточку открывается поверх большое модальное окно
 // В модальному окне отрисовать img, price, description
 
@@ -248,8 +263,9 @@ const products = [
 
 // Поиск контейнера ul
 const container = document.querySelector('.js-products');
-console.log(container);
+// console.log(container);
 
+// Пример объекта товара для разметки
 // {
 //   id: 1,
 //   img: 'https://www.vodafone.ua/shop/media/wysiwyg/novosti/Capture_1_large.JPG',
@@ -289,11 +305,13 @@ function handlerProductClick(evt) {
   // Создание переменной текущий продукт, метод closest, выбор li по классу js-product-item
   // Метод Element.closest() возвращает ближайший родительский элемент (или сам элемент), который соответствует заданному CSS-селектору
   const currentProduct = evt.target.closest('.js-product-item');
+  console.log(currentProduct);
 
   // Деструктуризация data-id
   const { id } = currentProduct.dataset;
+  console.log(id);
 
-  // Выбор Объекта текушщий продукт со свойствами. Метод массива find - поиск элемента массива с id, по которому сделан клик
+  // Выбор Объекта текущий продукт со свойствами. Метод массива find - поиск элемента массива с id, по которому сделан клик
   const product = products.find(
     // Переименование в объекте ключа id в productId, чтобы не совпадало с атрибутом id
     ({ id: productId }) => productId === Number(id)
@@ -303,15 +321,15 @@ function handlerProductClick(evt) {
   // Подключение модального окна, библиотека basicLightbox
 
   const instance = basicLightbox.create(`
-  // Разметка модалки
-   <div class="modal">
-      <img src="${product.img}" alt="${product.name}" width="500">
-      <h2>${product.name}</h2>
-      <h3>${product.price}</h3>
-      <p>${product.description}</p>
-   </div>
-`);
+    // Разметка модалки
+     <div class="modal">
+        <img src="${product.img}" alt="${product.name}" width="500">
+        <h2>${product.name}</h2>
+        <h3>${product.price}</h3>
+        <p>${product.description}</p>
+     </div>
+  `);
 
   instance.show();
-  instance.show(() => console.log('lightbox now visible'));
+  // instance.show(() => console.log('lightbox now visible'));
 }

@@ -1,0 +1,14 @@
+{
+  "name": "module9-lesson17-timers_and_time",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap.native": "^5.0.9"
+  }
+}
