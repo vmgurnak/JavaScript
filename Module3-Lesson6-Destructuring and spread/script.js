@@ -116,10 +116,12 @@
 
 // Значения по умолчанию	Default values
 
-const book = {
-  title: "The Last Kingdom",
-  author: "Bernard Cornwell",
-};
+// Для того чтобы избежать присвоения undefined при деструктуризации несуществующих свойств объекта, можно задать переменным значения по умолчанию, которые будут присвоены только в случае когда в объекте нет свойства с таким именем.
+
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+// };
 
 // Добавим картинку обложки если её нет в объекте книги
 // const {
@@ -463,7 +465,7 @@ const book = {
 // // const second = arr[1];
 // // console.log(second);
 
-// const [first, , second, , third] = arr;
+// const [first, second, third] = arr;
 // console.log(first);
 // console.log(second);
 // console.log(third);

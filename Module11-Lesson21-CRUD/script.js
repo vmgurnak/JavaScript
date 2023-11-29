@@ -214,43 +214,52 @@ const postId = 1;
 // Завдання - 2.
 // Реалізуй сторінку для власника бізнесу - після того, як потрапляємо на сторінку потрібно отримати з бази даних всі заявки, які були залишені користувачами
 
-// const elements = {
-//   form: document.querySelector('.js-question'),
-// };
+// Elements object
+const elements = {
+  form: document.querySelector('.js-question'),
+};
 
-// elements.form.addEventListener('submit', handlerQuestion);
+// Listener, submit event
+elements.form.addEventListener('submit', handlerQuestion);
 
-// function handlerQuestion(evt) {
-//   evt.preventDefault();
+// The callback function collects data from form fields
+function handlerQuestion(evt) {
+  evt.preventDefault();
 
-//   const { userName, phone, email, question } = evt.currentTarget.elements;
-//   const data = {
-//     name: userName.value,
-//     phone: phone.value,
-//     email: email.value,
-//     comment: question.value,
-//   };
+  // Destructuring form fields
+  const { userName, phone, email, question } = evt.currentTarget.elements;
 
-//   serviceQuestion(data)
-//     .then(() => alert('Success'))
-//     .catch(() => alert('Failed'))
-//     .finally(() => evt.target.reset());
-// }
+  const date = {
+    name: userName.value,
+    phone: phone.value,
+    email: email.value,
+    comment: question.value,
+  };
 
-// function serviceQuestion(data) {
-//   const options = {
-//     method: 'POST',
-//     body: JSON.stringify(data),
-//     headers: {
-//       'Content-type': 'application/json',
-//     },
-//   };
+  serviceQuestion(date)
+    .then((d) => {
+      console.log(d);
+      alert('Success');
+    })
+    .catch((_) => alert('Failed'))
+    .finally((_) => evt.target.reset());
+}
 
-//   return fetch('http://127.0.0.1:3000/api/question', options).then((resp) => {
-//     if (!resp.ok) {
-//       throw new Error(resp.statusText);
-//     }
+// Backend request function
+function serviceQuestion(date) {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(date),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
 
-//     return resp.json();
-//   });
-// }
+  return fetch('http://127.0.0.1:3000/api/question', options).then((resp) => {
+    console.log(resp);
+    if (!resp.ok) {
+      throw new Error(resp.statusText);
+    }
+    return resp.json();
+  });
+}

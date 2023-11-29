@@ -415,21 +415,21 @@
 // Напиши функцию getAllPropValues(propName) которая принимает один параметр propName - имя (ключ) свойства. Функция должна вернуть массив всех значений свойства с таким именем из каждого объекта в массиве products. Если в объектах нет свойства с таким именем, функция должна вернуть пустой массив.
 
 // const products = [
-//   { name: "Radar", price: 1300, quantity: 4 },
-//   { name: "Scanner", price: 2700, quantity: 3 },
-//   { name: "Droid", price: 400, quantity: 7 },
-//   { name: "Grip", price: 1200, quantity: 9 },
+//   { name: 'Radar', price: 1300, quantity: 4 },
+//   { name: 'Scanner', price: 2700, quantity: 3 },
+//   { name: 'Droid', price: 400, quantity: 7 },
+//   { name: 'Grip', price: 1200, quantity: 9 },
 // ];
 
 // function getAllPropValues(propName) {
 //   arrValue = [];
 
 //   for (const product of products) {
-//     //  console.log(product);
-//     //  console.log(product[propName]);
+//     console.log(product);
+//     console.log(product[propName]);
 
 //     const arrKey = Object.keys(product);
-//     //  console.log(arrKey);
+//     console.log(arrKey);
 
 //     if (arrKey.includes(propName)) {
 //       arrValue.push(product[propName]);
@@ -451,13 +451,13 @@
 //   return console.log(arrValue);
 // }
 
-// getAllPropValues("name");
-// // возвращает["Radar", "Scanner", "Droid", "Grip"]
-// getAllPropValues("quantity");
+// getAllPropValues('name');
+// возвращает["Radar", "Scanner", "Droid", "Grip"]
+// getAllPropValues('quantity');
 // // возвращает[(4, 3, 7, 9)];
-// getAllPropValues("price");
+// getAllPropValues('price');
 // // возвращает[1300, 2700, 400, 1200]
-// getAllPropValues("category");
+// getAllPropValues('category');
 // // возвращает[]
 
 // TASK 20
@@ -496,7 +496,9 @@
 // // возвращает 8100
 
 // TASK 21
+
 // Деструктуризация объектов
+
 // Пришел трёхдневный прогноз максимальных температур и мы считаем среднюю температуру за три дня (meanTemperature). Замени объявления переменных yesterday, today и tomorrow одной операцией деструктуризации свойств объекта highTemperatures.
 
 // const highTemperatures = {
@@ -515,6 +517,7 @@
 // console.log(meanTemperature);
 
 // TASK 22
+
 // Значения по умолчанию
 // В прогнозе максимальных температур также может быть необязательное свойство icon - иконка погоды. Замени объявления переменных yesterday, today, tomorrow и icon одной операцией деструктуризации свойств объекта highTemperatures. Задай значение по умолчанию для icon - строку "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".
 
@@ -542,6 +545,7 @@
 // console.log(icon);
 
 // TASK 23
+
 // Изменение имени переменной
 // Замени объявления переменных highYesterday, highToday, highTomorrow и highIcon одной операцией деструктуризации свойств объекта highTemperatures. Задай значение по умолчанию для highIcon - строку "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".
 
@@ -568,6 +572,7 @@
 // console.log(meanTemperature);
 
 // TASK 24
+
 // Деструктуризация в циклах
 // Выполни рефакторинг цикла for...of так, чтобы в нём использовалась деструктуризация объекта..
 
@@ -646,6 +651,7 @@
 // console.log(todayIcon);
 
 // TASK 26
+
 // Паттерн «Объект параметров»
 // Функция calculateMeanTemperature(forecast) принимает один параметр forecast - объект температур на два дня следующего формата.
 // {
@@ -1077,9 +1083,9 @@
 
 const atTheOldToad = {
   potions: [
-    { name: "Speed potion", price: 460 },
-    { name: "Dragon breath", price: 780 },
-    { name: "Stone skin", price: 520 },
+    { name: 'Speed potion', price: 460 },
+    { name: 'Dragon breath', price: 780 },
+    { name: 'Stone skin', price: 520 },
   ],
 
   getPotions() {
@@ -1173,7 +1179,7 @@ const atTheOldToad = {
 // console.log(atTheOldToad.removePotion("Speed potion"));
 // // в свойстве potions будет массив[{ name: "Dragon breath", price: 780 }, { name: "Stone skin", price: 520 }]
 
-console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"));
+console.log(atTheOldToad.updatePotionName('Dragon breath', 'Polymorth'));
 // в свойстве potions будет массив[{ name: "Speed potion", price: 460 }, { name: "Polymorth", price: 780 }, { name: "Stone skin", price: 520 }]
 
 // atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion");

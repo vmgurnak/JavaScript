@@ -1,6 +1,6 @@
 // Module 5 - Lesson 9 - The keyword this
 
-"use strict";
+// 'use strict';
 
 // Контекст выполнения функции	Function Execution Context
 
@@ -242,3 +242,262 @@
 // // Метод bind используется для привязки контекста при передаче методов объекта как колбэк-функций. Передадим колбэком не оригинальный метод getFullName, а его копию с привязанным контекстом к объекту customer.
 
 // makeMessage(customer.getFullName.bind(customer)); // Обрабатываем заявку от Jacob Mercer.
+
+// ЗАНЯТИЕ С ПРЕПОДАВАТЕЛЕМ
+
+// Типы функций
+
+// 1. function declaration
+
+// foo()
+// function foo(){
+// }
+// foo()
+
+// 2. function expression
+
+// const foo = function () {
+// }
+// foo()
+
+// 3.arrow function
+
+// const foo = () => {
+// }
+// foo()
+
+// В зависимости от вида функции делим на два блока
+
+// 1.declaration expression
+
+// 2.arrow
+
+// Нужно определить как написан метод, с помощью какой функции
+
+// const obj = {
+//   name: 'Test name',
+//   // function declaration
+//   hello() {
+//     console.log(this);
+//     console.log(this.name);
+//   },
+// };
+
+// // для function declaration кто стоит левее метода, тот и будет this
+// obj.hello();
+// // { name: 'Test name', hello: ƒ }
+// // Test name
+
+// const objA = {
+//   name: 'User name',
+//   hello: obj.hello,
+// };
+
+// objA.hello();
+// // {name: 'User name', hello: ƒ}
+// // User name
+
+// this вне функции послылается на глобальный объект window
+
+// arrow function или глобальный this 'use strict' не отрабатывает, только type="module"
+
+// 'use strict';
+
+// const person = {
+//   name: 'Alice',
+//   customThis: this,
+// };
+// console.log(person);
+
+// function declaration при глобальном вызове, не в методе объекта, если нет строго режима и тайпмодуля, будет ссылаться на объект window
+// function expression такое же поведение
+
+// 'use strict';
+// function foo() {
+//   //expression
+//   console.log(this);
+// }
+// foo();
+
+// arrow function при глобальном вызове ссылается на объект window кроме type="module"
+
+// 'use strict';
+// const arrow = () => {
+//   console.log(this);
+// };
+
+// arrow();
+
+// function declaration, expression
+
+// const person = {
+//   name: 'Alice',
+//   // hello() { // declaration
+//   //     console.log(this.name);
+//   // }
+//   // hello: function() { // expression
+//   //     console.log(this.name);
+//   // }
+//   skills: {
+//     html: true,
+//     css: false,
+//     js: true,
+//     showSkills() {
+//       console.log(this);
+//       //  Массив ключей объекта
+//       const keys = Object.keys(this);
+//       console.log(keys);
+//       //  Фильтр ключей со значением true и исключение с типом function
+//       const skills = keys.filter(
+//         (key) => this[key] && typeof this[key] !== 'function'
+//       );
+//       console.log(skills);
+//     },
+//   },
+// };
+// person.skills.showSkills();
+
+// arrow function
+
+const person = {
+  name: 'Alice',
+  years: 30,
+  //   //   arrow function
+  //   hello: () => {
+  //     console.log(this);
+  //   },
+  //   arrow function
+  hello() {
+    console.log('declaration', this);
+    const arrow = () => {
+      console.log('arrow', this);
+    };
+
+    return arrow;
+  },
+};
+const response = person.hello();
+
+response();
+response();
+
+// const test = {
+//     brand: 'BMW',
+//     maxSpeed: 200,
+//     price: 10000,
+//     getPrice() {
+//         console.log('getPrice',this);
+
+//         const getMaxSpeed = () => {
+//             console.log('arrow getMaxSpeed',this);
+
+//             // const getBrand = () => {
+//             //     console.log('arrow getBrand',this);
+//             // }
+//             // getBrand()
+//         }
+//         getMaxSpeed()
+//     }
+// }
+
+// test.getPrice()
+
+// const test = {
+//     brand: 'BMW',
+//     maxSpeed: 200,
+//     price: 10000,
+//     getPrice() {
+//         console.log('getPrice',this);
+
+//         function getMaxSpeed () {
+//             console.log('declaration getMaxSpeed',this);
+//         }
+//         getMaxSpeed()
+//     }
+// }
+
+// test.getPrice()
+
+// const test = {
+//     brand: 'BMW',
+//     maxSpeed: 200,
+//     price: 10000,
+//     getPrice: () => {
+//         console.log('arrow getPrice', this);
+
+//         const getMaxSpeed = () => {
+//             console.log('arrow getMaxSpeed', this);
+//         }
+//         getMaxSpeed()
+//     }
+// }
+
+// test.getPrice()
+
+// call apply bind
+// const person = {
+//     name: "Alice",
+//     city: 'Lviv'
+// }
+
+// function foo(car, speed) {
+//     console.log('car', car);
+//     console.log('speed', speed);
+//     console.log(this);
+// }
+// foo()
+// foo.call(person, 'BMW', 90)
+// const foo= function (car, speed) {
+//     console.log('car', car);
+//     console.log('speed', speed);
+//     console.log(this);
+// }
+
+// const foo = (car, speed) => {
+//     console.log('car', car);
+//     console.log('speed', speed);
+//     console.log(this);
+// }
+
+// foo.call(person, 'BMW', 90)
+
+// apply
+
+// function foo(car, speed) {
+//     console.log('car', car);
+//     console.log('speed', speed);
+//     console.log(this);
+// }
+// foo.apply(person, ['BMW', 90,"hello", 345]);
+// // foo.apply(person1, ['Audi', 90]);
+
+// foo.call(person, ...['BMW', 90]);
+
+// bind
+// const person1 = {
+//     name: "Kate",
+//     city: 'Odessa'
+// }
+// function foo(car, speed) {
+//     // console.log(arguments);
+//     console.log('car', car);
+//     console.log('speed', speed);
+//     console.log(this);
+// }
+
+// const copy = foo.bind(person);
+// // console.log(copy);
+// copy('Volvo', 100)
+// copy('Audi', 120)
+// foo()
+
+// foo('Volvo', 100)
+
+// const foo = (car, speed) => {
+//     // console.log(arguments);
+//     console.log('car', car);
+//     console.log('speed', speed);
+//     console.log(this);
+// }
+// const copy = foo.bind(person1);
+// copy('Volvo', 100)

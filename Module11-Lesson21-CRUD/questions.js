@@ -1,32 +1,33 @@
-// const elements = {
-//   container: document.querySelector('.js-list'),
-// };
+const elements = {
+  container: document.querySelector('.js-list'),
+};
 
-// serviceGetAll().then((data) =>
-//   elements.container.insertAdjacentHTML('beforeend', createMarkup(data))
-// );
+serviceGetAll().then((data) =>
+  elements.container.insertAdjacentHTML('beforeend', createMarkup(data))
+);
 
-// function serviceGetAll() {
-//   return fetch('http://127.0.0.1:3000/api/getAll').then((resp) => {
-//     if (!resp.ok) {
-//       throw new Error(resp.statusText);
-//     }
+// Function GET request to the backend
+function serviceGetAll() {
+  return fetch('http://127.0.0.1:3000/api/getAll').then((resp) => {
+    if (!resp.ok) {
+      throw new Error(resp.statusText);
+    }
+    return resp.json();
+  });
+}
 
-//     return resp.json();
-//   });
-// }
-
-// function createMarkup(arr) {
-//   return arr
-//     .map(
-//       ({ _id, phone, name, email, comment }) => `<li data-question-id="${_id}">
-//   <ul>
-//     <li>Name: ${name}</li>
-//     <li>Phone: ${phone}</li>
-//     <li>Email: ${email}</li>
-//   </ul>
-//   <p>${comment}</p>
-// </li>`
-//     )
-//     .join('');
-// }
+// Markup function
+function createMarkup(arr) {
+  return arr
+    .map(
+      ({ name, phone, email, comment, _id }) => ` <li data-question-id="${_id}">
+         <ul>
+            <li>Name: ${name}</li>
+            <li>Phone: ${phone}</li>
+            <li>Email: ${email}</li>
+         </ul>
+         <p>${comment}</p>
+      </li>`
+    )
+    .join('');
+}

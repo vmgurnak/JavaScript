@@ -12,7 +12,8 @@
 .contact-form label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
 }
 
 .contact-form input[type='text'],

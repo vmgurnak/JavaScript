@@ -17,10 +17,22 @@
 
    <a href="./questions.html">Go to the Questions</a>
    <form action="submit" class="contact-form js-question">
-      <input type="text" required name="userName" />
-      <input type="tel" required name="phone" />
-      <input type="email" required name="email" />
-      <textarea name="question" cols="30" rows="10"></textarea>
+      <label>
+         Name
+         <input type="text" required name="userName" />
+      </label>
+      <label>
+         Phone
+         <input type="tel" required name="phone" />
+      </label>
+      <label>
+         Email
+         <input type="email" required name="email" />
+      </label>
+      <label>
+         Question
+         <textarea name="question" cols="30" rows="10"></textarea>
+      </label>
       <button>Send</button>
    </form>
 
